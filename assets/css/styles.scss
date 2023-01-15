@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+// $color-blue: #143556;
+$color-blue: #0d2136;
+$color-orange-light: #fdb59f;
+$color-orange-dark: #cd7778;
+$color-white1: #d7d7d7;
+$color-black1: #333333;
+*{  
+  font-family: 'Montserrat', sans-serif;
+}
+body{
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+//------ SCROLLBAR ------
+
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  background: $color-orange-light;
+}
+::-webkit-scrollbar-track-piece{
+  background: $color-blue;
+}
+::-webkit-scrollbar-button{
+  background: $color-blue;
+}
+//------ RESPONSIVIDAD ------
+@media(max-width: 991px){
+  .nav-link{
+    color: $color-black1;
+    padding-left: .5rem;
+  }
+  .nav-link.active{
+    color: $color-black1 !important;
+    border-left: solid 2px $color-orange-dark;
+  }
+  .text-hero{
+    margin-top: -40%;
+    font-size: .8rem;
+  }
+  #btn-reservar{
+    margin-top: 2rem;
+  }
+}
+@media(min-width: 992px){
+  .nav-link{
+    color: $color-white1;
+    font-size: .8rem;
+    margin: 0 1rem;
+    letter-spacing: .1rem;
+  }
+  .nav-link.active{
+    border-bottom: solid 2px $color-orange-dark;
+  }
+  .text-hero{
+    font-size: 1.3rem;
+    margin-top: -300px;
+  }
+  #btn-reservar{
+    margin-top: 5rem;
+  }
+}
+//------ NAVBAR ------
+.nav-link:hover{
+  color: $color-orange-light;
+}
+.navlink.active.collapsed{
+  border: solid 2px $color-orange-dark;
+}
+.navbar-brand{
+  color: $color-white1;
+  letter-spacing: .2rem;
+  font-size: 1.4rem;
+  padding-left: 1rem;
+  font-weight: 600;
+}
+.navbar-brand:hover{
+  color: $color-white1;
+}
+.navbar-collapse{
+  margin-left: auto;
+}
+.offcanvas{
+  background-color: $color-white1;
+  color: black;
+}
+.navbar-filled{
+  background-color: $color-blue;
+  color: $color-white1;
+}
+//------ HERO ------
+video{
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: bottom ;
+  margin: 0;
+}
+.text-hero{
+  font-weight: 700;
+  letter-spacing: .2rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  color: $color-white1;
+}
+//------ FOOTER ------
+footer{
+  background-color: $color-blue;
+  margin-top: 5rem;
+  padding: 5rem;
+  color:$color-white1;
+}
+footer a{
+  text-decoration:none;
+  color: $color-white1;
+  margin:0 0 1rem;
+}
+footer a:hover{
+  color: $color-orange-light;
+}
+#direccion:hover{
+  color: $color-orange-light;
+  cursor: pointer;
+}
+.name-footer{
+  letter-spacing: .2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+//------ SECCIONES ------
+.seccion{
+  padding: 5rem 0 3rem 0;
+  margin: 3rem auto;
+}
+section p{
+  font-size: .9rem;
+  text-align: justify;
+}
+.title-section{
+  text-align: center;
+  font-size: 1.8rem;
+  letter-spacing: .2rem;
+  margin-bottom: 4rem; 
+}
+.image-wrapper img{
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.img-wrapper-3 img{
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#servicios{
+  margin-top: 3rem;
+}
+.title a{
+  letter-spacing: .2rem;
+  text-decoration: none;
+  color: $color-black1;
+}
+.carta p{
+  font-size: .8rem;
+  text-align: justify;
+}
+//------ COLORS DECORATIONS ------
+.orange{
+  background-color: $color-orange-light;
+  opacity: 60%;
+}
+.blue{
+  background-color: $color-blue;
+  opacity: 20%;
+}
+.white{
+  background-color: $color-white1;
+}
+//------ MENSAJE REMODELACION ------
+#remodelacion .modal-content{
+  background-color: $color-blue;
+  color: $color-white1;
+  border-radius: 0;
+  opacity: 80%;
+}
+#remodelacion .modal-header{
+  border-bottom: none;
+}
+#remodelacion .modal-header button{
+  background-color: $color-blue;
+  color: $color-white1;
+  border: 1px solid $color-white1;
+  height: 1.6rem;
+  width: 1.6rem;
+}
+#remodelacion .modal-body{
+  font-size: .9rem;
+}
+#remodelacion .modal-footer{
+  border-top: none;
+  justify-content: center;
+}
+#remodelacion .modal-footer button{
+  background-color: $color-blue;
+  color: $color-white1;
+  border: solid 1px $color-white1;
+  border-radius: 0;
+  opacity: 100%;
+  // width: 5rem;
+}
+//------ FORM DATOS RESERVAR -----
+#myModal2{
+  background-color: red;
+}
+#myModal2 .modal-content{
+  background-color: $color-blue;
+  color: $color-white1;
+  border-radius: 0;
+  opacity: 90%;
+}
+#myModal2 .modal-header{
+  border-bottom: none;
+}
+#myModal2 .modal-header button{
+  background-color: $color-blue;
+  color: $color-white1;
+  border: 1px solid $color-white1;
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+#myModal2 .modal-footer{
+  border-top: none;
+  justify-content: center;
+}
+#myModal2 .modal-footer button{
+  background-color: $color-blue;
+  color: $color-white1;
+  border: solid 1px $color-white1;
+  border-radius: 0;
+  opacity: 100%;
+}
+#myModal2 input{
+  background-color: $color-blue;
+  color: $color-white1;
+  border: 1px solid $color-orange-light;
+  border-radius: 0;
+  opacity: 100%;
+}
+#myModal2 input:focus{
+  box-shadow: none;
+  border: solid 2px $color-orange-dark;
+}
+#myModal2 textarea{
+  background-color: $color-blue;
+  color: $color-white1;
+  border: 1px solid $color-orange-light;
+  border-radius: 0;
+}
+#myModal2 textarea:focus{
+  border: 2px solid $color-orange-dark;
+  box-shadow: none;
+}
+//------ BTN RESERVA -------
+.btn-reservar{
+  opacity: 90%;
+}
+.btn-reservar, .btn-reservar:hover{
+  background-color: $color-white1;
+  width: 17rem;
+  height: 3.5rem;
+  border-radius: 0;
+  color: $color-blue;
+  align-self: center;
+}
+.btn-reservar:hover{
+  border: 2px solid $color-orange-light;
+  opacity: 100%;
+}
+
+#btn-reserva-spa, #btn-comprar-gift{
+  background-color: $color-blue;
+  color: $color-white1;
+  margin-top: 2rem;
+}
+// ------- MAP ------
+#map{
+  display: none;
+}
+#map img{
+  width: 100%;
+  object-fit: cover;
+  opacity: 80%;
+} 
+//------ WHATSAPP BTN ------
+.whatsapp{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 70px;
+  left: 20px;
+  background-color: $color-blue;
+  border-radius: 50%;
+  padding: 0;
+}
+//------ BOOTSTRAP MIO JEJE ------
+.gap-6{
+  gap: 4rem;
+}

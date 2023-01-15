@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+#reserva {
+  padding-bottom: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+#reserva form {
+  margin: 1rem 0;
+}
+
+.grupo-reserva {
+  width: 16rem;
+  border: solid 2px #fdb59f;
+  background-color: #d7d7d7;
+  cursor: pointer;
+}
+
+.grupo-reserva input {
+  border: none;
+  background-color: #d7d7d7;
+  cursor: pointer;
+}
+
+#roomType {
+  width: 100%;
+  background-color: #d7d7d7;
+  border: none;
+  cursor: pointer;
+}
+
+#roomType option {
+  text-align: center;
+}
+
+#roomType:focus {
+  box-shadow: none;
+}
+
+.grupo-reserva input:focus {
+  outline: none;
+}
+
+.grupo-reserva input::-moz-placeholder {
+  color: #0d2136;
+}
+
+.grupo-reserva input:-ms-input-placeholder {
+  color: #0d2136;
+}
+
+.grupo-reserva input::placeholder {
+  color: #0d2136;
+}
+
+.grupo-reserva label {
+  cursor: pointer;
+  color: #0d2136;
+}
+
+.informacion-estadia {
+  margin: 0.5rem 0;
+  color: #0d2136;
+  font-size: 0.7rem;
+}
+
+.informacion-estadia span {
+  font-size: 1.1rem;
+}
+
+.informacion-estadia .col {
+  background-color: #d7d7d7;
+}
+
+.btn-continuar {
+  background-color: #d7d7d7;
+  width: 17rem;
+  height: 4rem;
+  border-radius: 0;
+  color: #0d2136;
+  align-self: center;
+}
+
+.btn-continuar:hover {
+  background-color: #d7d7d7;
+  border: 2px solid #fdb59f;
+}
+
+.btn-continuar:disabled {
+  opacity: 100%;
+  background-color: #d7d7d7;
+  border: solid 2px #fdb59f;
+}
+
+#carousel-reserva img {
+  height: 400px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  margin: 0;
+}
+
+#carousel-reserva .carousel-item {
+  padding: 0;
+}
+
+#carousel-reserva {
+  height: 400px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  visibility: hidden;
+}
+
+.wrapper {
+  background-color: #d7d7d7;
+  width: 27.8rem;
+}
+
+.wrapper header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+
+header .displayed-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+header .icons span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+  color: #0d2136;
+  font-size: 1.9rem;
+}
+
+header .icons span:hover {
+  color: #fdb59f;
+}
+
+header .icons span:last-child {
+  margin-right: -10px;
+}
+
+.calendar {
+  padding: 13px;
+}
+
+.calendar .days {
+  margin-bottom: 0rem;
+}
+
+.calendar .weeks li {
+  font-weight: 500;
+}
+
+.calendar ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.calendar .days li {
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+}
+
+.calendar ul li {
+  position: relative;
+  width: 14.2857142857%;
+}
+
+.calendar .days li::before {
+  position: absolute;
+  content: "";
+  height: 50px;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: #d7d7d7;
+}
+
+.days li.curr-day::before {
+  background-color: #0d2136;
+  opacity: 30%;
+}
+
+.days li.between-dates::before {
+  background-color: #fdb59f;
+}
+
+.days li.available::before {
+  background-color: rgb(119, 214, 119);
+}
+
+.days li.unavailable::before {
+  background-color: rgb(243, 86, 86);
+}
+
+.days li.check-in-date::before, .days li.check-out-date::before {
+  background-color: #cd7778;
+}
+
+.days li.between-active::before {
+  background-color: #fdb59f;
+}
+
+.days li.inactive {
+  color: #a4a4a4;
+}/*# sourceMappingURL=calendar.css.map */

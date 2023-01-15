@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+#reserva-spa {
+  font-size: 1rem;
+}
+
+.wrapper-spa {
+  background-color: #d7d7d7;
+  width: 30rem;
+}
+
+.wrapper-spa header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+
+header .displayed-date-spa {
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+.calendar-spa {
+  padding: 13px;
+}
+
+.calendar-spa .days-spa {
+  margin-bottom: 0rem;
+}
+
+.calendar-spa .days-spa li {
+  font-weight: 500;
+}
+
+.calendar-spa ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.calendar-spa .days-spa li {
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+}
+
+.calendar-spa ul li {
+  position: relative;
+  width: 14.2857142857%;
+  height: 1.3rem;
+}
+
+.calendar-spa .days-spa ul li {
+  height: 0.5rem;
+}
+
+.calendar-spa.weeks-spa .days-spa li::before {
+  position: absolute;
+  content: "";
+  height: 0.5rem;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: #d7d7d7;
+}
+
+.days-spa li.curr-day-spa::before {
+  background-color: #0d2136;
+  opacity: 30%;
+}
+
+.days-spa li.available::before {
+  background-color: rgb(119, 214, 119);
+}
+
+.days-spa li.unavailable::before {
+  background-color: rgb(243, 86, 86);
+}
+
+.days-spa li.selected-block::before {
+  background-color: #cd7778;
+}
+
+.days-spa li.inactive {
+  color: #a4a4a4;
+}
+
+.blocks-spa {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  text-align: center;
+}
+
+.blocks-spa li {
+  position: relative;
+  width: 100%;
+  height: 1.3rem;
+  cursor: pointer;
+}/*# sourceMappingURL=calendar-spa.css.map */

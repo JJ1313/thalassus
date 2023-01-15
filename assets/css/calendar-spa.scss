@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+$color-blue: #0d2136;
+$color-orange-light: #fdb59f;
+$color-orange-dark: #cd7778;
+$color-white1: #d7d7d7;
+$color-black1: #333333;
+$color-inactive: #a4a4a4;
+
+$color-available: rgb(119, 214, 119);
+$color-unavailable: rgb(243, 86, 86) ; 
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+#reserva-spa{
+  // display: none;
+  font-size:  1rem;
+}
+//------ MONTHLY CALENDAR ------
+.wrapper-spa{
+  background-color: $color-white1;
+  width: 30rem;
+}
+.wrapper-spa header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .displayed-date-spa{
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+}
+.calendar-spa{
+  padding: 13px;
+}
+.calendar-spa .days-spa{
+  margin-bottom: 0rem;
+}
+.calendar-spa .days-spa li{
+  font-weight: 500;
+}
+.calendar-spa ul{
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.calendar-spa .days-spa li{
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+}
+.calendar-spa ul li{
+  position: relative;
+  width: calc(100% / 7);
+  height: 1.3rem;
+}
+.calendar-spa .days-spa ul li{
+  height: .5rem;
+}
+.calendar-spa.weeks-spa .days-spa li::before{
+  position: absolute;
+  content: "";
+  height: .5rem;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: $color-white1;
+}
+.days-spa li.curr-day-spa::before{
+  background-color: $color-blue;
+  opacity: 30%;
+}
+.days-spa li.available::before{
+  background-color: $color-available;
+}
+.days-spa li.unavailable::before{
+  background-color: $color-unavailable;
+}
+
+.days-spa li.selected-block::before{
+  background-color: $color-orange-dark;
+}
+.days-spa li.inactive{
+  color: $color-inactive;
+}
+//------ DAYLY CALENDAR ------
+.blocks-spa{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  text-align: center;
+}
+.blocks-spa li{
+  position: relative;
+  width: 100%;
+  height: 1.3rem;
+  cursor: pointer;
+}

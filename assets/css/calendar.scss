@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+$color-blue: #0d2136;
+$color-orange-light: #fdb59f;
+$color-orange-dark: #cd7778;
+$color-white1: #d7d7d7;
+$color-black1: #333333;
+$color-inactive: #a4a4a4;
+
+$color-available: rgb(119, 214, 119);
+$color-unavailable: rgb(243, 86, 86) ; 
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+//------ FORM RESERVAR ------
+#reserva{
+  padding-bottom: 2rem;
+  // display: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#reserva form{
+  margin: 1rem 0;
+}
+.grupo-reserva{
+  width: 16rem;
+  border: solid 2px $color-orange-light;
+  background-color: $color-white1;
+  cursor:pointer;
+}
+.grupo-reserva input{
+  border: none;
+  background-color: $color-white1;
+  cursor: pointer;
+}
+#roomType{
+  width: 100%;
+  background-color: $color-white1;
+  border: none;
+  cursor: pointer;
+}
+#roomType option{
+  text-align: center;
+}
+#roomType:focus{
+  box-shadow: none;
+}
+.grupo-reserva input:focus{
+  outline: none;
+}
+.grupo-reserva input::placeholder{
+  color: $color-blue
+}
+.grupo-reserva label{
+  cursor: pointer;
+  color: $color-blue;
+}
+//------ INF. ESTADIA ------
+.informacion-estadia{
+  margin: .5rem 0;
+  color: $color-blue;
+  font-size: .7rem;
+}
+.informacion-estadia span{
+  font-size: 1.1rem;
+}
+.informacion-estadia .col{
+  background-color: $color-white1;
+}
+//------ BTN CONTINUAR ------
+.btn-continuar{
+  background-color: $color-white1;
+  width: 17rem;
+  height: 4rem;
+  border-radius: 0;
+  color: $color-blue;
+  align-self: center;
+}
+.btn-continuar:hover{
+  background-color: $color-white1;
+  border: 2px solid $color-orange-light;
+}
+.btn-continuar:disabled{
+  opacity: 100%;
+  background-color: $color-white1;
+  border: solid 2px $color-orange-light;
+}
+//------ IMAGEN ROOM TYPE ------
+#carousel-reserva img{
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;  
+}
+#carousel-reserva .carousel-item{
+  padding: 0;
+}
+#carousel-reserva{
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  visibility: hidden;
+}
+//------ CALENDAR ------
+.wrapper{
+  background-color: $color-white1;
+  width: 27.8rem;
+}
+.wrapper header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .displayed-date{
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+}
+header .icons span{
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+  color: $color-blue;
+  font-size: 1.9rem;
+}
+header .icons span:hover{
+  color: $color-orange-light;
+}
+header .icons span:last-child{
+  margin-right: -10px;
+}
+.calendar{
+  padding: 13px;
+}
+.calendar .days{
+  margin-bottom: 0rem;
+}
+.calendar .weeks li{
+  font-weight: 500;
+}
+.calendar ul{
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+}
+.calendar ul li{
+  position: relative;
+  width: calc(100% / 7);
+}
+.calendar .days li::before{
+  position: absolute;
+  content: "";
+  height: 50px;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: $color-white1;
+}
+.days li.curr-day::before{
+  background-color: $color-blue;
+  opacity: 30%;
+}
+.days li.between-dates::before{
+  background-color: $color-orange-light;
+}
+.days li.available::before{
+  background-color: $color-available;
+}
+.days li.unavailable::before{
+  background-color: $color-unavailable;
+}
+
+.days li.check-in-date::before, .days li.check-out-date::before{
+  background-color: $color-orange-dark;
+}
+.days li.between-active::before{
+  background-color: $color-orange-light;
+}
+.days li.inactive{
+  color: $color-inactive;
+}
