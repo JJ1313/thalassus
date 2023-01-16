@@ -8,14 +8,15 @@
  include("conexion.php");
  $consulta = "SELECT * FROM clientes WHERE codigo='" . $_SESSION["rut"] . "'";
  foreach ($con->query($consulta) as $row) {
-        $idcli=$row["id"];          
+        $idcli=$row["id"]; 
+        $nomcli=$row["nombres"];          
  }
  $items=0;
  $total=0;   
  ?> 
  <div class="form-group" style="padding:10;">
  <label class="form-label" for="carrito">
- <h1><b>CARRITO DE COMPRAS</b></h1>
+ <h1><b>CARRITO DE COMPRAS <?php echo $nomcli; ?></b></h1>
  </label>
  <table class="table table-responsive">
   <thead>

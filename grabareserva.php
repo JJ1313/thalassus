@@ -13,16 +13,14 @@ transform: translate(-50%, -50%);text-align: center;">
 <?php
 
     session_start();
-    
-    $_SESSION["rut"]       = $_POST["rut"];
-    $_SESSION["nombre"]    = $_POST["nombres"];
-    $_SESSION["ciudad"]    = $_POST["ciudad"];
-    $_SESSION["fecha"]     = $_POST["fecha_nacimiento"];
-    $_SESSION["direccion"] = $_POST["direccion"];
-    $_SESSION["telefono"]  = $_POST["telefono"];
-    $_SESSION["correo"]    = $_POST["correo"];
-    $_SESSION["horini"]    = date('h:i:s A');
-
+    $_SESSION["rut"]=$_POST["rut"];
+    $_SESSION["nombre"]=$_POST["nombres"];
+    $_SESSION["ciudad"]=$_POST["ciudad"];
+    $_SESSION["fecha"]=$_POST["fecha_nacimiento"];
+    $_SESSION["direccion"]=$_POST["direccion"];
+    $_SESSION["telefono"]=$_POST["telefono"];
+    $_SESSION["correo"]=$_POST["correo"];
+    $_SESSION["horini"]=date('H:i:s');
     include("conexion.php");
     
     $idcli=0;
@@ -43,17 +41,18 @@ transform: translate(-50%, -50%);text-align: center;">
        $tabla="res_cabanas";
        $tabla2="cabanas";
        $campo="idcab";
-       $mensaje="cabaï¿½a";
+       $mensaje="cabaña";
     }
-    if ($_POST["tipo"]==2){
+    if ($_POST["tipo"]==2||$_POST["tipo"]==3){
        $tabla="res_suites";
        $tabla2="suites";
        $campo="idsui";
        $mensaje="suite";
     }    
     $idalo=0;
-    $consulta = "SELECT id,numero FROM ".$tabla2;
-    foreach ($con->query($consulta) as $row) {
+    if ($tabla2=="cabanas"){
+       $consulta = "SELECT id,numero FROM ".$tabla2;
+       foreach ($con->query($consulta) as $row) {
          $consulta2 = "SELECT * FROM ".$tabla." WHERE ".$campo."=".$row["id"]. " order by fechaf desc";
          //echo $consulta2;
          $sw=0;         
@@ -73,7 +72,35 @@ transform: translate(-50%, -50%);text-align: center;">
          if ($idalo>0){
             break;
          }
-    }     
+       }   
+    }else {
+      //Suites
+
+          $consulta2 = "SELECT * FROM ".$tabla." WHERE ".$campo."=".($_POST["tipo"]-1). " order by fechaf desc";       
+          //echo $consulta2;
+         
+          $sw=0;   
+          foreach ($con->query($consulta2) as $row2) {
+               $fechaInicio=strtotime($_POST["initialDate"]);
+               $fechaFin=strtotime($_POST["finishDate"]);
+               for($i=$fechaInicio; $i<=$fechaFin; $i+=86400){                
+                  if (date("Y-m-d", $i)>=$row2["fechai"]&&date("Y-m-d", $i)<=$row2["fechaf"]){
+                     $sw=1;                  
+                     break;
+                  }
+               }
+         }  
+         if ($sw==0){
+            $idalo=($_POST["tipo"]-1); 
+         } 
+         /*       
+         if ($idalo>0){
+            break;
+         }
+         */
+       
+    }   
+    
     //exit;
     if ($idalo>0){    
     $fini=explode("-",$_POST["initialDate"]);

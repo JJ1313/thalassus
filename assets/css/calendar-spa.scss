@@ -3,13 +3,13 @@
 $color-blue: #0d2136;
 $color-orange-light: #fdb59f;
 $color-orange-dark: #cd7778;
-$color-white1: #d7d7d7;
+$color-white1: #f4f6f6;
+// $color-white1: #d7d7d7;
 $color-black1: #333333;
 $color-inactive: #a4a4a4;
-
+$color-between: #d7d7d7;
 $color-available: rgb(119, 214, 119);
 $color-unavailable: rgb(243, 86, 86) ; 
-
 *{
   font-family: 'Montserrat', sans-serif;
 }
@@ -19,27 +19,29 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 //------ MONTHLY CALENDAR ------
 .wrapper-spa{
-  background-color: $color-white1;
-  width: 30rem;
+  background-color: white;
+  width: 22rem;
 }
 .wrapper-spa header{
   display: flex;
   align-items: center;
-  padding: 25px 30px 10px;
+  // padding: 25px 30px 10px;
   justify-content: space-between;
 }
 header .displayed-date-spa{
   font-size: 1.45rem;
   font-weight: 500;
   letter-spacing: .1rem;
+  margin-top: 1rem;
 }
 .calendar-spa{
-  padding: 13px;
+  // padding: 13px;
+  margin-left: -2.3rem;
 }
 .calendar-spa .days-spa{
   margin-bottom: 0rem;
 }
-.calendar-spa .days-spa li{
+.calendar-spa .weeks-spa li{
   font-weight: 500;
 }
 .calendar-spa ul{
@@ -51,40 +53,44 @@ header .displayed-date-spa{
 .calendar-spa .days-spa li{
   z-index: 1;
   cursor: pointer;
-  margin-top: 27px;
+  margin-top: 16px;
 }
 .calendar-spa ul li{
   position: relative;
   width: calc(100% / 7);
-  height: 1.3rem;
+  // height: 1.3rem;
 }
-.calendar-spa .days-spa ul li{
-  height: .5rem;
-}
-.calendar-spa.weeks-spa .days-spa li::before{
+
+// .calendar-spa .days-spa li{
+//   height: .5rem;
+// }
+.calendar-spa .days-spa li::before{
   position: absolute;
   content: "";
-  height: .5rem;
-  width: 50px;
+  height: 2.5rem;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
   background-color: $color-white1;
 }
-.days-spa li.curr-day-spa::before{
-  background-color: $color-blue;
-  opacity: 30%;
-}
+// .days-spa li.curr-day-spa{
+//   background-color: $color-blue;
+//   opacity:30%;
+//   color: red;
+// }
 .days-spa li.available::before{
   background-color: $color-available;
 }
 .days-spa li.unavailable::before{
   background-color: $color-unavailable;
 }
-
+.days-spali.selected-day::before{
+  background-color: $color-orange-light;
+}
 .days-spa li.selected-block::before{
-  background-color: $color-orange-dark;
+  background-color: $color-orange-light;
 }
 .days-spa li.inactive{
   color: $color-inactive;
@@ -95,10 +101,14 @@ header .displayed-date-spa{
   flex-direction: column;
   list-style: none;
   text-align: center;
+  width: 10rem;
+  height: 100%;
+  // background-color: red;
 }
 .blocks-spa li{
   position: relative;
-  width: 100%;
-  height: 1.3rem;
+  // width: 100%;
+  height: calc(100% / 11);
   cursor: pointer;
+  border: solid 1px red;
 }

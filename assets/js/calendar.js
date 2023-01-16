@@ -2,7 +2,7 @@ $(function(){
   //------ Colors ------
   const colorOrangeDark = "#cd7778",
   colorOrangeLight = "#fdb59f",
-  colorWhite = "#d7d7d7",
+  colorWhite = "#f4f6f6",
   colorBlue = "#0d2136",
   colorBlack = "#333333";
   // ------ Date ------
@@ -32,8 +32,11 @@ $(function(){
   let cantNoches = 0;
   
   //------ FUNCTIONS ------
-  const getDaysInMonth = (month, year) => (new Date(year, month, 0).getDate());
-  // console.log(getDaysInMonth(month, year));
+  // Retorna la cantidad de dias de un mes y año dado, meses del 0-11
+  const getDaysInMonth = (month, year) =>{
+    let cantDias = new Date(year, month + 1, 0).getDate();
+    return cantDias;
+  };
   const getDaysBetweenDates = (date1, date2) =>((date2-date1)/(1000*60*60*24));
   const selectLanguage = () =>{
     if($("html").attr("lang") == "es"){
@@ -50,28 +53,47 @@ $(function(){
   }
 
   const renderCalendar = () => {
-    // console.log(months)
-    // console.log(displayedMonth);
     $("#month .displayed-date").text(`${months[displayedMonth]} ${displayedYear}`);
-    // let diasMesAnterior;
-    // let diasMesActual;
-    // let primerNumCalendario = getDaysInMonth(displayedMonth - 1)-(presentDate.getDay()-1);
-    // console.log(primerNumCalendario);
-    // if(displayedMonth == 0){
-    //   // console.log(getDaysInMonth(11, displayedYear-1));
-    // }
-    // else{
-    //   // console.log(getDaysInMonth(displayedMonth - 1, displayedYear))
-    // }
-    // -agregar los dias, agregar dias mes pasado como class inactive
-    // $("#month .days li").each(function(){
-    
-    // })
+    let cantDiasMonth = getDaysInMonth(displayedMonth, displayedYear);
+    //let cantDiasMonthBefore = getDaysInMonth(displayedMonth - 1, year);
+    let nameFirstDayMonth = new Date(displayedYear, displayedMonth, 1).getDay() ;
+    //let primerNumMonthBefore = cantDiasMonthBefore - 1;
+    //console.log(primerNumMonthBefore);
+    let limite = nameFirstDayMonth - 1;
+    if (limite < 0){
+      limite = 6
+    }
+    let write = false;
+    let number = 1;
+    $("#month .days li").each(function(index){
+      if(index == limite){
+        write = true;
+      }
+      if(write  && number <= cantDiasMonth){
+        $(this).css({"opacity": "100", "pointer-events": "auto"});
+        $(this).text(number);
+        number++;
+      }
+      else{
+        $(this).css({"opacity": "0", "pointer-events": "none"});
+        
+      }
+    })
+  }
+  const getValorTotal = (dias) =>{
+    let valor = new Intl.NumberFormat('es-ES').format($("#valor-por-noche").text() * dias * 1000);
+    $("#valor-total-reserva").text(valor);
   }
   const activarContinuar = () =>{
     if( dateCheckIn && dateCheckOut && $("#roomType").val()!= 0){
-      $("#btncontinuar").removeAttr("disabled").css({"border": "solid 2px" + colorBlue, "background-color": colorBlue, "color": colorWhite});
+      $("#btncontinuar").removeAttr("disabled").css({"border": "solid 2px" + colorOrangeLight, "background-color": colorOrangeLight, "color": colorBlue})
+      cantNoches = getDaysBetweenDates(dateCheckIn, dateCheckOut);
+      getValorTotal(cantNoches);
     }
+    else{
+      $("#btncontinuar").attr("disabled", "disabled");
+    }
+
   }
   const markDays = () =>{
     let tempDate;
@@ -91,57 +113,63 @@ $(function(){
       if(dateCheckOut && tempDate.getTime() == dateCheckOut.getTime()){
         $(this).addClass("check-out-date");
       }
-      if(tempDate.getTime() == presentDate.getTime()){
-        $(this).addClass("curr-day");
-      }
+      // if(tempDate.getTime() == presentDate.getTime()){
+      //   $(this).addClass("curr-day");
+      // }
     })  
   }
   // Marcar paso en la selecion de reserva
   const markStep = () => {
     if(step == 0){
-      $(".grupo-reserva.type").css("border-color", colorBlue);
-      $(".grupo-reserva.check-in").css("border-color", colorOrangeLight);
+      $(".grupo-reserva.type").css("background-color", colorOrangeLight);
+      $(".grupo-reserva.check-in").css("background-color", colorWhite);
+      $(".grupo-reserva.check-out").css("background-color", colorWhite);
+      
       $(".grupo-reserva.check-in input").attr("placeholder", "");
-      $(".grupo-reserva.check-out").css("border-color", colorOrangeLight);
       $(".grupo-reserva.check-out input").attr("placeholder", "");
-      if(!$("#btncontinuar").attr("disabled")){
-        $("#btncontinuar").css({"border": "solid 2px" + colorBlue});
-      }
-      else{
-        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      }
+      // $(".grupo-reserva.type").css("border-color", colorOrangeDark);
+      // $(".grupo-reserva.check-in").css("border-color", colorOrangeLight);
+      // $(".grupo-reserva.check-out").css("border-color", colorOrangeLight);
+      // if(!$("#btncontinuar").attr("disabled")){
+      //   $("#btncontinuar").css({"border": "solid 2px" + colorBlue});
+      // }
+      // else{
+      //   $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
+      // }
     }
     if(step == 1){
-      $(".grupo-reserva.type").css("border-color", colorOrangeLight);
-      $(".grupo-reserva.check-in").css("border-color", colorBlue);
+      $(".grupo-reserva.type").css("background-color", colorWhite);
+      $(".grupo-reserva.check-in").css("background-color", colorOrangeLight);
+      $(".grupo-reserva.check-out").css("background-color", colorWhite);
+      
       $(".grupo-reserva.check-in input").attr("placeholder", placeholder);
-      $(".grupo-reserva.check-out").css("border-color", colorOrangeLight);
       $(".grupo-reserva.check-out input").attr("placeholder", "");
-      if(!$("#btncontinuar").attr("disabled")){
-        $("#btncontinuar").css("border", "solid 2px" + colorBlue);
-      }
-      else{
-        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      }
+      // $(".grupo-reserva.type").css("border-color", colorOrangeLight);
+      // $(".grupo-reserva.check-in").css("border-color", colorOrangeDark);
+      // $(".grupo-reserva.check-out").css("border-color", colorOrangeLight);
+      // if(!$("#btncontinuar").attr("disabled")){
+      //   $("#btncontinuar").css("border", "solid 2px" + colorBlue);
+      // }
+      // else{
+      //   $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
+      // }
     }
     if(step == 2){
-      $(".grupo-reserva.type").css("border-color", colorOrangeLight);
-      $(".grupo-reserva.check-in").css("border-color", colorOrangeLight);
+      $(".grupo-reserva.type").css("background-color", colorWhite);
+      $(".grupo-reserva.check-in").css("background-color", colorWhite);
+      $(".grupo-reserva.check-out").css("background-color", colorOrangeLight);
+
+      // $(".grupo-reserva.type").css("border-color", colorOrangeLight);
+      // $(".grupo-reserva.check-in").css("border-color", colorOrangeLight);
       $(".grupo-reserva.check-in input").attr("placeholder", "");
-      $(".grupo-reserva.check-out").css("border-color", colorBlue);
+      // $(".grupo-reserva.check-out").css("border-color", colorOrangeDark);
       $(".grupo-reserva.check-out input").attr("placeholder", placeholder);
-      if(!$("#btncontinuar").attr("disabled")){
-        $("#btncontinuar").css("border", "solid 2px" + colorBlue);
-      }
-      else{
-        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      }
+
     }
     if(step == 3){
-      $(".grupo-reserva.type").css("border-color", colorOrangeLight);
-      $(".grupo-reserva.check-in").css("border-color", colorOrangeLight);
-      $(".grupo-reserva.check-out").css("border-color", colorOrangeLight);
-      $("#btncontinuar").css("border", "solid 2px" + colorBlue);
+      $(".grupo-reserva.type").css("background-color", colorWhite);
+      $(".grupo-reserva.check-in").css("background-color", colorWhite);
+      $(".grupo-reserva.check-out").css("background-color", colorWhite);
     }
   }
 
@@ -172,17 +200,17 @@ $(function(){
     $("#carousel-reserva").css("visibility", "visible")
     if($("#roomType").val() == 1){
       // Cabaña
-      $(".img-1 img").attr("src","./assets/img/cabana_01.jpg");
+      $(".img-1 img").attr("src","./assets/img/cabana_01.jpeg");
       step = 1;
     }
     else if($("#roomType").val() == 2){
-      // Suite 1
-      $(".img-1 img").attr("src","./assets/img/suite_01.jpg");
+      // Suite 1 -Pacifico
+      $(".img-1 img").attr("src","./assets/img/suite1_01.jpeg");
       step = 1;
     }
     else if($("#roomType").val() == 3){
-      // Suite 2
-      $(".img-1 img").attr("src","./assets/img/suite_02.jpg");
+      // Suite2 - Terraza
+      $(".img-1 img").attr("src","./assets/img/suite2_01.jpeg");
       step = 1;
     }
     else{

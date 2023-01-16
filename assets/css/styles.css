@@ -6,6 +6,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
+  width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -199,7 +200,7 @@ section p {
 
 .blue {
   background-color: #0d2136;
-  opacity: 20%;
+  opacity: 15%;
 }
 
 .white {
@@ -243,7 +244,7 @@ section p {
 }
 
 #myModal2 {
-  background-color: red;
+  background-color: #0d2136;
 }
 
 #myModal2 .modal-content {

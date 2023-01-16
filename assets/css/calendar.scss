@@ -3,10 +3,11 @@
 $color-blue: #0d2136;
 $color-orange-light: #fdb59f;
 $color-orange-dark: #cd7778;
-$color-white1: #d7d7d7;
+$color-white1: #f4f6f6;
+// $color-white1: #d7d7d7;
 $color-black1: #333333;
 $color-inactive: #a4a4a4;
-
+$color-between: #d7d7d7;
 $color-available: rgb(119, 214, 119);
 $color-unavailable: rgb(243, 86, 86) ; 
 
@@ -25,18 +26,18 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 .grupo-reserva{
   width: 16rem;
-  border: solid 2px $color-orange-light;
   background-color: $color-white1;
   cursor:pointer;
 }
 .grupo-reserva input{
   border: none;
-  background-color: $color-white1;
+  background-color: inherit;
   cursor: pointer;
 }
+
 #roomType{
   width: 100%;
-  background-color: $color-white1;
+  background-color: inherit;
   border: none;
   cursor: pointer;
 }
@@ -58,33 +59,37 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 //------ INF. ESTADIA ------
 .informacion-estadia{
-  margin: .5rem 0;
+  margin: 0;
   color: $color-blue;
   font-size: .7rem;
+  align-content: center;
 }
 .informacion-estadia span{
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
-.informacion-estadia .col{
+.informacion-estadia{
   background-color: $color-white1;
+}
+.informacion-estadia .regular{
+  font-size: .8rem;
 }
 //------ BTN CONTINUAR ------
 .btn-continuar{
   background-color: $color-white1;
+  border: none;
   width: 17rem;
   height: 4rem;
   border-radius: 0;
   color: $color-blue;
   align-self: center;
+  opacity: 100%;
 }
 .btn-continuar:hover{
   background-color: $color-white1;
-  border: 2px solid $color-orange-light;
 }
 .btn-continuar:disabled{
-  opacity: 100%;
   background-color: $color-white1;
-  border: solid 2px $color-orange-light;
 }
 //------ IMAGEN ROOM TYPE ------
 #carousel-reserva img{
@@ -106,19 +111,22 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 //------ CALENDAR ------
 .wrapper{
-  background-color: $color-white1;
-  width: 27.8rem;
+  background-color: white;
+  // width: 27.8rem;
+  width: 22rem;
 }
+//--- Header---
 .wrapper header{
   display: flex;
   align-items: center;
-  padding: 25px 30px 10px;
+  // padding: 25px 30px 10px;
   justify-content: space-between;
 }
 header .displayed-date{
   font-size: 1.45rem;
   font-weight: 500;
   letter-spacing: .1rem;
+  margin-top: 1rem;
 }
 header .icons span{
   height: 38px;
@@ -136,25 +144,34 @@ header .icons span:hover{
 header .icons span:last-child{
   margin-right: -10px;
 }
+//--- Calendar numbers ---
 .calendar{
-  padding: 13px;
+  // padding: 13px;
+  margin-left: -2.3rem;
 }
-.calendar .days{
+.calendar .days{ 
   margin-bottom: 0rem;
+  // margin-left: -2.3rem;
 }
+// .calendar .weeks{
+  
+//   margin-left: -2.3rem;
+// }
 .calendar .weeks li{
   font-weight: 500;
+
 }
 .calendar ul{
   display: flex;
   list-style: none;
   flex-wrap: wrap;
   text-align: center;
+
 }
 .calendar .days li{
   z-index: 1;
   cursor: pointer;
-  margin-top: 27px;
+  margin-top: 16px;
 }
 .calendar ul li{
   position: relative;
@@ -163,20 +180,20 @@ header .icons span:last-child{
 .calendar .days li::before{
   position: absolute;
   content: "";
-  height: 50px;
-  width: 50px;
+  height: 2.5rem;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
   background-color: $color-white1;
 }
-.days li.curr-day::before{
-  background-color: $color-blue;
-  opacity: 30%;
-}
+// .days li.curr-day::before{
+//   background-color: $color-blue;
+//   opacity: 30%;
+// }
 .days li.between-dates::before{
-  background-color: $color-orange-light;
+  background-color: $color-between;
 }
 .days li.available::before{
   background-color: $color-available;
@@ -186,11 +203,11 @@ header .icons span:last-child{
 }
 
 .days li.check-in-date::before, .days li.check-out-date::before{
-  background-color: $color-orange-dark;
-}
-.days li.between-active::before{
   background-color: $color-orange-light;
 }
+// .days li.between-active::before{
+//   background-color: $color-orange-light;
+// }
 .days li.inactive{
   color: $color-inactive;
 }

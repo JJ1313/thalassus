@@ -25,6 +25,16 @@ foreach ($con->query($consulta2) as $row) {
         $items+=1;          
 }
 
+$precios1="";
+$consulta2 = "SELECT * FROM masajes";
+foreach ($con->query($consulta2) as $row) {
+        $precios1.=$row["tipo"]." ".$row["valor"]."<BR>";          
+}
+$precios2="";
+$consulta2 = "SELECT * FROM tinas";
+foreach ($con->query($consulta2) as $row) {
+        $precios2.=$row["descrip"]." ".$row["valor"]."<BR>";          
+}
 $carrito="display:none;";
 if ($items>0){
    $carrito="display:block;";
@@ -48,10 +58,13 @@ if ($items>0){
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timecircles/1.5.3/TimeCircles.min.js" integrity="sha512-FofOhk0jW4BYQ6CFM9iJutqL2qLk6hjZ9YrS2/OnkqkD5V4HFnhTNIFSAhzP3x//AD5OzVMO8dayImv06fq0jA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
-<script>
-var icar=0;
-</script>  
+
 <body>
   <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
@@ -102,6 +115,60 @@ var icar=0;
         </div>
       </div>
     </nav>
+
+    <?php 
+    if (isset($_SESSION["horini"])){
+    $horini=strtotime($_SESSION["horini"]);        
+    $fecfin=date("Y-m-d H:i:s", strtotime('+300 second',$horini));  
+    //echo "Horai=".date("Y-m-d H:i:s", $horini)."<BR>";
+    //echo "Horaf=".$fecfin."<BR>"; 
+    //echo "Hora-ac".date("Y-m-d H:i:s")."<BR>";
+    if (date("Y-m-d H:i:s")>$fecfin){      
+       header('Location: expira.php');    
+    }else{
+      //echo "NO";
+    }      
+    }      
+    ?>
+        
+    <div id="DateCountdown" data-date="<?php echo $fecfin; ?>" style="width: 50%;display:none;"></div>
+    <script>
+      $(window).resize(function(){
+      $("#DateCountdown").TimeCircles().rebuild();               
+      });      
+
+      $("#DateCountdown").TimeCircles(   
+        {
+        "animation": "smooth",
+        "bg_width": 0,
+        "fg_width": 0,
+        "circle_bg_color": "#60686F",
+          "time": {
+            "Days": {
+              "text": "Days",
+              "color": "#FFCC66",
+              "show": false
+            },
+                "Hours": {
+              "text": "Hours",
+              "color": "#99CCFF",
+              "show": false
+            },
+            "Minutes": {
+              "text": "Minutes",
+              "color": "#BBFFBB",
+              "show": true
+            },
+            "Seconds": {
+              "text": "Seconds",
+              "color": "#FF9999",
+               "show": true
+            }
+          }          
+      }
+    );      
+    </script>     
+      
     <!-- Modal -->
     <div class="modal" id="remodelacion" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -148,8 +215,8 @@ var icar=0;
                 <select name="tipo" class="form-select" id="roomType">
                   <option value="0">--Seleccione</option>
                   <option value="1">CABAÑA</option>
-                  <option value="2">SUITE 1</option>
-                  <option value="3">SUITE 2</option>
+                  <option value="2">SUITE PACÍFICO</option>
+                  <option value="3">SUITE TERRAZA</option>
                 </select>
               </div>
           </div>
@@ -163,7 +230,10 @@ var icar=0;
           </div>
           <div class="grupo-reserva check-out d-flex flex-column">
             <label for="finishDate">HASTA</label>
-            <input type="text" name="finishDate" id="finishDate" readonly="readonly" placeholder="" class="text-center">
+            <div class="d-flex">
+              <img class="my-auto ms-2" src="./assets/img/icon/calendar.png" width="25" height="auto">
+              <input type="text" name="finishDate" id="finishDate" readonly="readonly" placeholder="" class="text-center">
+            </div>
           </div>
           <button id="btncontinuar" class="btn btn-continuar" data-toggle="modal" data-target="#myModal2" onclick="return false;" disabled>CONTINUAR</button> 
         </div>
@@ -243,7 +313,7 @@ var icar=0;
       <!-- Fin Reserva -->
       <div class="container">
         <div class="row justify-content-center gap-3 mt-1">
-          <div class="col-6 align-items-center" style="background-color: #d7d7d7;">
+          <div class="col-6 align-items-center">
             <div id="carousel-reserva" class="carousel slide carousel-fade" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item img-1 active" data-bs-interval="10">
@@ -261,7 +331,7 @@ var icar=0;
               </div>
             </header>
             <div class="calendar">
-              <ul class="weeks">
+              <ul class="weeks" >
                 <li>Lun</li>          
                 <li>Mar</li>          
                 <li>Mie</li>          
@@ -270,7 +340,7 @@ var icar=0;
                 <li>Sab</li>          
                 <li>Dom</li>          
               </ul>
-              <ul class="days">      
+              <ul class="days" >      
                 <li>1</li>          
                 <li>2</li>          
                 <li>3</li>          
@@ -302,18 +372,34 @@ var icar=0;
                 <li>29</li>          
                 <li>30</li>          
                 <li>31</li>                 
+                <li>32</li>                 
+                <li>33</li>                 
+                <li>34</li>                 
+                <li>35</li>                 
+                <li>36</li>                 
+                <li>37</li>                 
+                <li>38</li>                 
+                <li>39</li>                 
+                <li>40</li>                 
+                <li>41</li>                 
+                <li>42</li>                 
               </ul>
             </div>
           </div>
         </div>
-        <div class="row informacion-estadia justify-content-center gap-6 text-center">
-          <div class="col col-5 py-3">
-            CHECK-IN: 14:00 <br>
-            CHECK-OUT: 12:00
+        <div class="row informacion-estadia justify-content-center gap-6 text-center mt-1 py-3">
+          <div class="col col-2 my-auto regular">
+            CHECK-IN:  <strong>14:00</strong><br>
+            CHECK-OUT: <strong>12:00</strong> 
           </div>
-          <div class="col col-5 py-3">
-            VALOR POR NOCHE: CLP $ <span id="valor-por-noche">145.000</span><br>
-            VALOR TOTAL: CLP $<span id="valor-total-reserva">290.000</span>
+          <div class="col col-3 my-auto">
+            2 PERSONAS<br>
+            VALOR PERSONA EXTRA: CLP $20.000 <br>
+            VALOR MASCOTA: CLP $20.000
+          </div>
+          <div class="col col-5 my-auto">
+            CLP $<span id="valor-por-noche">145.000</span> NOCHE<br>
+            CLP $<span id="valor-total-reserva">0</span> TOTAL
           </div>
         </div>
       </div>
@@ -321,7 +407,7 @@ var icar=0;
 
     <section id="thalasoterapia" class="container seccion">
       <div class="row px-5 gap-5 justify-content-center">
-        <div style="z-index:-1; width:80%; height:23rem; position:absolute;margin-top: 4.8rem;" class="blue"></div>
+        <div style="z-index:-1; width:100%; height:23rem; position:absolute;margin-top: 4.8rem;" class="blue"></div>
         <div class="col-12 col-md-5">
           <div class="image-wrapper">
             <img class="card-image" src="./assets/img/costa-de-concon-top.jpg" alt="" height="300">
@@ -336,6 +422,8 @@ var icar=0;
         </div>
       </div>
     </section>
+    <script>
+    </script>
     <section id="reserva-spa">
       <form action="" method="post" onsubmit="target_popup(this,300,100);">
         <div class="d-flex flex-row flex-wrap justify-content-center text-center">
@@ -343,7 +431,12 @@ var icar=0;
               <label for="spaType">TIPO</label>
               <div class="d-flex">
                 <img class="my-auto ms-2" src="./assets/img/icon/bed.png" alt="" height="auto" width="25">
-                <select name="spaType" class="form-select" id="spaType">
+                <select id="spaType" name="spaType" class="form-select" id="spaType" onchange="
+                if (document.getElementById('spaType').value==1){  
+                   document.getElementById('valor-spa').value=45000;
+                 }else{                   
+                   document.getElementById('valor-spa').value=50000;
+                 }">
                   <option value="0">--Seleccione</option>
                   <option value="1">MASAJE</option>
                   <option value="2">SALA THALASOTEAPIA</option>
@@ -416,6 +509,17 @@ var icar=0;
               <li>29</li>          
               <li>30</li>          
               <li>31</li>                 
+              <li>32</li>                 
+              <li>33</li>                 
+              <li>34</li>                 
+              <li>35</li>                 
+              <li>36</li>                 
+              <li>37</li>                 
+              <li>38</li>                 
+              <li>39</li>                 
+              <li>40</li>                 
+              <li>41</li>                 
+              <li>42</li>                  
             </ul>
           </div>
         </div>
@@ -440,13 +544,15 @@ var icar=0;
           INFORMACION SOBRE SPA
         </div>
         <div class="col col-5 py-3">
-          VALOR: CLP $ <span id="valor-spa">145.000</span>
+          VALOR: CLP $ <input id="valor-spa" type="text" value="">
         </div>
       </div>
     </section>
-    <section id="servicios" class="container seccion">
-      <div class="white" style="z-index: -1; width: 80%; height: 20rem; position: absolute; margin-top: 9rem; margin-left: 2rem;"></div>
-      <div class="title-section"> TODA LA EXPERIENCIA</div>
+    <section id="servicios" class="container-fluid seccion">
+      <div class="row">
+        <div class="white" style="z-index: -1; width: 100%; height: 20rem; position: absolute; margin-top: 9rem;"></div>
+        <div class="title-section"> TODA LA EXPERIENCIA</div>
+      </div>
       <div class="row justify-content-center px-5 gap-5">
         <div class="carta col-12 col-sm-8 col-lg-3">
           <div class="img-wrapper-3">
@@ -473,7 +579,7 @@ var icar=0;
     </section>
     <section id="gift-card" class="container seccion">
       <div class="row px-5 gap-5 justify-content-center">
-        <div class="orange" style="z-index:-1; width:80%; height:23rem; position:absolute;margin-top: 4.8rem;"></div>
+        <div class="orange" style="z-index:-1; width:100%; height:23rem; position:absolute;margin-top: 4.8rem;"></div>
         <div class="col-12 col-md-5 d-flex flex-column">
           <h3 class="title px-4 px-md-0">GIFT CARD THALASSUS</h3>
           <p class="mt-auto px-4 px-md-0">
@@ -603,6 +709,27 @@ var icar=0;
     window.open('', 'formpopup', 'width='+w+',height='+h+',top='+y+',left='+x+',resizable=no,toolbar=no,location=no,status=no,menubar=no');
     form.target = 'formpopup';
   }
+  </script>
+  <script>
+  $('#DateCountdown').TimeCircles().addListener(function() {
+      var time = $('#DateCountdown').TimeCircles().getTime();
+      document.write(time.minutes+":"+time.seconds);
+      /*
+      var ms = time % 1000;
+      var s = (time - ms) / 1000;
+      var seconds = s % 60;
+      var minutes = (s - seconds) / 60;
+      */
+      if (time.minutes==1&&time.seconds==0){
+         alert("Falta 1  minuto");
+      }
+      
+      if (minutes==0&&seconds==0){
+         alert("Se acabó el tiempo");
+         window.location.href="expira.php";
+      }       
+      
+      });  
     </script>
 </body>
 </html>

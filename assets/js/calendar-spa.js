@@ -28,8 +28,10 @@ $(function(){
   let cantNoches = 0;
   
   //------ FUNCTIONS ------
-  const getDaysInMonth = (month, year) => (new Date(year, month, 0).getDate());
-  const selectLanguage = () =>{
+  const getDaysInMonth = (month, year) =>{
+    let cantDias = new Date(year, month + 1, 0).getDate();
+    return cantDias;
+  };  const selectLanguage = () =>{
     if($("html").attr("lang") == "es"){
       months = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
       placeholder = "Selecciona una fecha";
@@ -45,10 +47,32 @@ $(function(){
 
   const renderCalendar = () => {
     $("#month-spa .displayed-date-spa").text(`${months[displayedMonth]} ${displayedYear}`);
-    // -agregar los dias, agregar dias mes pasado como class inactive
-    $("#month .days li").each(function(){
-    
-    })
+    // -agregar los dias, agregar dias mes pasado como class inactiv
+      let cantDiasMonth = getDaysInMonth(displayedMonth, displayedYear);
+      //let cantDiasMonthBefore = getDaysInMonth(displayedMonth - 1, year);
+      let nameFirstDayMonth = new Date(displayedYear, displayedMonth, 1).getDay() ;
+      //let primerNumMonthBefore = cantDiasMonthBefore - 1;
+      //console.log(primerNumMonthBefore);
+      let limite = nameFirstDayMonth - 1;
+      if (limite < 0){
+        limite = 6
+      }
+      let write = false;
+      let number = 1;
+      $("#month-spa .days-spa li").each(function(index){
+        if(index == limite){
+          write = true;
+        }
+        if(write  && number <= cantDiasMonth){
+          $(this).css({"opacity": "100", "pointer-events": "auto"});
+          $(this).text(number);
+          number++;
+        }
+        else{
+          $(this).css({"opacity": "0", "pointer-events": "none"});
+          
+        }
+      })
   }
   const activarContinuar = () =>{
     // if( dateCheckIn && dateCheckOut && $("#roomType").val()!= 0){
@@ -56,13 +80,18 @@ $(function(){
     // }
   }
   const markDays = () =>{
-    // let tempDate;
-    // $("#month .days li").each(function(){
-    //   tempDate = new Date(displayedYear, displayedMonth, $(this).text());
-    //   presentDate.setHours(0,0,0,0);
-    //   $(this).removeClass();
-      
-    // })  
+    let tempDate;
+    $("#month-spa .days-spa li").each(function(){
+      tempDate = new Date(displayedYear, displayedMonth, $(this).text());
+      presentDate.setHours(0,0,0,0);
+      $(this).removeClass();
+      if(tempDate.getTime() == presentDate.getTime()){
+        $(this).addClass("curr-day-spa");
+      }
+      if(tempDate < presentDate){
+        $(this).addClass("inactive");
+      }
+    })
   }
   // Marcar paso en la selecion de reserva
   const markStep = () => {
@@ -70,28 +99,28 @@ $(function(){
       $(".grupo-reserva.type-spa").css("border-color", colorBlue);
       $(".grupo-reserva.date-schedule").css("border-color", colorOrangeLight);
       $(".grupo-reserva.date-schedule input").attr("placeholder", "");
-      if(!$("#btncontinuar").attr("disabled")){
-        $("#btncontinuar").css({"border": "solid 2px" + colorBlue});
-      }
-      else{
-        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      }
+      // if(!$("#btncontinuar").attr("disabled")){
+      //   $("#btncontinuar").css({"border": "solid 2px" + colorBlue});
+      // }
+      // else{
+      //   $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
+      // }
     }
     if(step == 1){
       $(".grupo-reserva.type-spa").css("border-color", colorOrangeLight);
       $(".grupo-reserva.date-schedule").css("border-color", colorBlue);
       $(".grupo-reserva.date-schedule input").attr("placeholder", placeholder);
-      if(!$("#btncontinuar").attr("disabled")){
-        $("#btncontinuar").css("border", "solid 2px" + colorBlue);
-      }
-      else{
-        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      }
+      // if(!$("#btncontinuar").attr("disabled")){
+      //   $("#btncontinuar").css("border", "solid 2px" + colorBlue);
+      // }
+      // else{
+      //   $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
+      // }
     }
     if(step == 2){
       $(".grupo-reserva.type-spa").css("border-color", colorOrangeLight);
       $(".grupo-reserva.date-schedule").css("border-color", colorOrangeLight);
-      $("#btncontinuar").css("border", "solid 2px" + colorBlue);
+      // $("#btncontinuar").css("border", "solid 2px" + colorBlue);
     }
   }
 
