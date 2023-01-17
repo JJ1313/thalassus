@@ -76,7 +76,6 @@ $(function(){
       }
       else{
         $(this).css({"opacity": "0", "pointer-events": "none"});
-        
       }
     })
   }
@@ -113,9 +112,6 @@ $(function(){
       if(dateCheckOut && tempDate.getTime() == dateCheckOut.getTime()){
         $(this).addClass("check-out-date");
       }
-      // if(tempDate.getTime() == presentDate.getTime()){
-      //   $(this).addClass("curr-day");
-      // }
     })  
   }
   // Marcar paso en la selecion de reserva
@@ -180,7 +176,9 @@ $(function(){
       displayedMonth++;
     }
     if($(this).hasClass("prev")){
-      displayedMonth--;
+      // if(! new Date(displayedYear, displayedMonth-1, getDaysInMonth(displayedMonth-1, displayedYear) < new Date(year, month, 1))){
+        displayedMonth--;
+      // }
     }
     if(displayedMonth == -1){
       displayedMonth = 11;
@@ -258,6 +256,7 @@ $(function(){
       if(auxDate > dateCheckIn){
         dateCheckOut = auxDate;
         $("#finishDate").val(`${day}-${month}-${displayedYear}`);
+        
         if($("#roomType").val() == 0){
           step = 0;
         }

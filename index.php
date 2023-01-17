@@ -1,7 +1,11 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <?php
-session_start();
 
+include("conexion.php");
+$items=0;
+
+if (isset($_SESSION["rut"])){
 $rut       = $_SESSION["rut"]      ;
 $nombre    = $_SESSION["nombre"]   ;
 $ciudad    = $_SESSION["ciudad"]   ;
@@ -10,7 +14,6 @@ $direccion = $_SESSION["direccion"];
 $telefono  = $_SESSION["telefono"] ;
 $correo    = $_SESSION["correo"]   ;
 
-include("conexion.php");
 $consulta = "SELECT * FROM clientes WHERE codigo='" . $rut . "'";
 foreach ($con->query($consulta) as $row) {
         $idcli=$row["id"];          
@@ -23,6 +26,8 @@ foreach ($con->query($consulta2) as $row) {
 $consulta2 = "SELECT * FROM res_suites WHERE idcli=" . $idcli . " and estado=0";
 foreach ($con->query($consulta2) as $row) {
         $items+=1;          
+}
+
 }
 
 $precios1="";
@@ -123,18 +128,20 @@ if ($items>0){
     //echo "Horai=".date("Y-m-d H:i:s", $horini)."<BR>";
     //echo "Horaf=".$fecfin."<BR>"; 
     //echo "Hora-ac".date("Y-m-d H:i:s")."<BR>";
-    if (date("Y-m-d H:i:s")>$fecfin){      
-       header('Location: expira.php');    
+    if (date("Y-m-d H:i:s")>$fecfin){     
+       echo "SI";  
+       //header('Location: expira.php');    
+       //echo "<script>window.location.href='expira.php'</script>";
     }else{
       //echo "NO";
     }      
     }      
     ?>
         
-    <div id="DateCountdown" data-date="<?php echo $fecfin; ?>" style="width: 50%;display:none;"></div>
+    <div id="DateCountdown" data-date="<?php echo $fecfin; ?>" style="width: 50%;display:block;"></div>
     <script>
       $(window).resize(function(){
-      $("#DateCountdown").TimeCircles().rebuild();               
+      $("#DateCountdown").TimeCircles().rebuild();            
       });      
 
       $("#DateCountdown").TimeCircles(   
@@ -167,8 +174,7 @@ if ($items>0){
           }          
       }
     );      
-    </script>     
-      
+    </script>            
     <!-- Modal -->
     <div class="modal" id="remodelacion" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -682,7 +688,6 @@ if ($items>0){
       </div>
       </form>     
   </div>
-
   </footer>
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

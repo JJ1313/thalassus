@@ -64,7 +64,7 @@ $(function(){
       $(".nav-link").eq(1).text("SPA");
       $(".nav-link").eq(2).text("ALOJAMIENTO");
       $(".nav-link").eq(3).text("CAFETERÍA");
-      $(".nav-link").eq(4).text("CIRCUITOS");
+      $(".nav-link").eq(4).text("PROGRAMAS");
       $(".nav-link").eq(5).text("NUESTRA HISTORIA");
       $(".nav-link").eq(6).text("EN");
       $(".nav-link").eq(6).addClass("spanish").removeClass("english");

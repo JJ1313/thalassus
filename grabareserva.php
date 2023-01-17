@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <HTML>
 <HEAD>
  <TITLE>New Document</TITLE>
@@ -12,7 +15,6 @@ left: 50%;
 transform: translate(-50%, -50%);text-align: center;">    
 <?php
 
-    session_start();
     $_SESSION["rut"]=$_POST["rut"];
     $_SESSION["nombre"]=$_POST["nombres"];
     $_SESSION["ciudad"]=$_POST["ciudad"];
@@ -20,7 +22,9 @@ transform: translate(-50%, -50%);text-align: center;">
     $_SESSION["direccion"]=$_POST["direccion"];
     $_SESSION["telefono"]=$_POST["telefono"];
     $_SESSION["correo"]=$_POST["correo"];
-    $_SESSION["horini"]=date('H:i:s');
+    if (!isset($_SESSION["horini"])){
+       $_SESSION["horini"]=date('H:i:s');
+    }
     include("conexion.php");
     
     $idcli=0;
