@@ -100,7 +100,7 @@
 }
 
 #carousel-reserva img {
-  height: 400px;
+  height: inherit;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -113,13 +113,13 @@
   padding: 0;
 }
 
+.carousel-item {
+  height: 350px;
+}
+
 #carousel-reserva {
-  height: 400px;
+  height: 350px;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
   visibility: hidden;
 }
 

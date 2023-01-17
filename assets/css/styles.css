@@ -9,22 +9,6 @@ body {
   width: 100%;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #fdb59f;
-}
-
-::-webkit-scrollbar-track-piece {
-  background: #0d2136;
-}
-
-::-webkit-scrollbar-button {
-  background: #0d2136;
-}
-
 @media (max-width: 991px) {
   .nav-link {
     color: #333333;
@@ -86,7 +70,7 @@ body {
 
 .offcanvas {
   background-color: #d7d7d7;
-  color: black;
+  color: #0d2136;
 }
 
 .navbar-filled {
@@ -205,6 +189,10 @@ section p {
 
 .white {
   background-color: #d7d7d7;
+}
+
+#alojamiento .modal-content {
+  background-color: rebeccapurple;
 }
 
 #remodelacion .modal-content {

@@ -19,8 +19,10 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 //------ MONTHLY CALENDAR ------
 .wrapper-spa{
-  background-color: white;
+  // background-color: white;
+  padding: 0;
   width: 22rem;
+  // border: solid 1px red;
 }
 .wrapper-spa header{
   display: flex;
@@ -97,6 +99,8 @@ header .displayed-date-spa{
 }
 //------ DAYLY CALENDAR ------
 .blocks-spa{
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -110,5 +114,7 @@ header .displayed-date-spa{
   // width: 100%;
   height: calc(100% / 11);
   cursor: pointer;
-  border: solid 1px red;
+  // border: solid 1px red;
+  text-align: center;
+  background-color: $color-white1;
 }

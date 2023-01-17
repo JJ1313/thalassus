@@ -1,7 +1,7 @@
 $(function(){
   // ------ MENSAJE REMODELACION ------
   // $(window).on('load', function() {
-  //   $('#remodelacion').modal('show');
+  //   $("#remodelacion").modal('show');
   // });
   //   $(window).on('load', function() {
   //   $('#myModal2').modal('show');

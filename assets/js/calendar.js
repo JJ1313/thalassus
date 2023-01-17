@@ -100,7 +100,7 @@ $(function(){
       tempDate = new Date(displayedYear, displayedMonth, $(this).text());
       presentDate.setHours(0,0,0,0);
       $(this).removeClass();
-      if(tempDate < presentDate){
+      if(tempDate < presentDate || tempDate.getTime() == presentDate.getTime()){
         $(this).addClass("inactive");
       }
       if(tempDate > dateCheckIn && tempDate < dateCheckOut){
@@ -203,7 +203,7 @@ $(function(){
     }
     else if($("#roomType").val() == 2){
       // Suite 1 -Pacifico
-      $(".img-1 img").attr("src","./assets/img/suite1_01.jpeg");
+      $(".img-1 img").attr("src","./assets/img/suite1_02.jpeg");
       step = 1;
     }
     else if($("#roomType").val() == 3){

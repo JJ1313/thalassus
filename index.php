@@ -91,14 +91,15 @@ if ($items>0){
                 <a class="nav-link" href="./spa.php">SPA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./alojamiento.php">ALOJAMIENTO</a>
+                <a class="nav-link" href="" data-toggle="modal" data-target="#alojamiento" onclick="return false;">ALOJAMIENTO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./cafeteria.php">CAFETERÍA</a>
+                <a class="nav-link" href="#">CAFETERÍA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./programas.php">PROGRAMAS</a>
+                <a class="nav-link" href="#">PROGRAMAS</a>
               </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="#nuestra-historia">NUESTRA HISTORIA</a>
               </li>
@@ -138,7 +139,7 @@ if ($items>0){
     }      
     ?>
         
-    <div id="DateCountdown" data-date="<?php echo $fecfin; ?>" style="width: 50%;display:block;"></div>
+    <!-- <div id="DateCountdown" data-date="<?php echo $fecfin; ?>" style="width: 50%;display:block;"></div> -->
     <script>
       $(window).resize(function(){
       $("#DateCountdown").TimeCircles().rebuild();            
@@ -189,10 +190,37 @@ if ($items>0){
           </div>
           <h5 class="modal-title text-center">NOS ESTAMOS PREPARANDO PARA TI</h5>
           <div class="modal-body text-center">
-            Disculpa las molestias, estamos preparando un mejor paraiso para ti, queremos darte lo mejor. 
+            Disculpa las molestias, estamos preparando un mejor paraiso. Queremos darte lo mejor. 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn" data-bs-dismiss="modal">CERRAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="alojamiento" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="text-center">
+              <!-- TUERCA -->
+            </div>
+            <button type="button" class="close ms-auto" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <h5 class="modal-title text-center">ALOJAMIENTO</h5>
+          <div class="modal-body text-center">
+            <h6>CABAÑA</h6>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste vero veritatis dignissimos non autem quasi molestias illo, eaque aperiam vitae exercitationem! Asperiores aliquid vel, error quam ipsam quod ad minima.</p>
+            <h6>SUITE PACIFICO</h6>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste vero veritatis dignissimos non autem quasi molestias illo, eaque aperiam vitae exercitationem! Asperiores aliquid vel, error quam ipsam quod ad minima.</p>
+            <h6>SUITE TERRAZA</h6>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste vero veritatis dignissimos non autem quasi molestias illo, eaque aperiam vitae exercitationem! Asperiores aliquid vel, error quam ipsam quod ad minima.</p>
+
+          </div>
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn" data-bs-dismiss="modal">CERRAR</button> -->
           </div>
         </div>
       </div>
@@ -323,7 +351,7 @@ if ($items>0){
             <div id="carousel-reserva" class="carousel slide carousel-fade" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item img-1 active" data-bs-interval="10">
-                  <img class="d-block w-100" src="" alt="Slide 1">
+                  <img class="d-block h-100" src="" alt="Slide 1" height="350">
                 </div>
               </div>
             </div>
@@ -400,8 +428,8 @@ if ($items>0){
           </div>
           <div class="col col-3 my-auto">
             2 PERSONAS<br>
-            VALOR PERSONA EXTRA: CLP $20.000 <br>
-            VALOR MASCOTA: CLP $20.000
+            CLP $<strong>20.000</strong> PERSONA EXTRA  <br>
+            CLP $ <strong>20.000</strong> MASCOTA 
           </div>
           <div class="col col-5 my-auto">
             CLP $<span id="valor-por-noche">145.000</span> NOCHE<br>
@@ -465,6 +493,9 @@ if ($items>0){
         </div>
       </form>
       <div class="row justify-content-center mt-5">
+        <div class="col-3">
+          <p id="descripcion-selection-spa">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe at, excepturi quasi velit facere in libero distinctio error voluptates incidunt consectetur sapiente quos cum consequatur! Illum fuga iste impedit qui.</p>
+        </div>
         <div id="month-spa" class="col-6 wrapper-spa">
           <header>
             <p class="displayed-date-spa">Mes AÑO</p>
@@ -529,7 +560,7 @@ if ($items>0){
             </ul>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-2">
           <ul class="blocks-spa">
             <li>09:00</li>
             <li>10:15</li>

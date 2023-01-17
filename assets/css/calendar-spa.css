@@ -8,7 +8,7 @@
 }
 
 .wrapper-spa {
-  background-color: white;
+  padding: 0;
   width: 22rem;
 }
 
@@ -88,6 +88,8 @@ header .displayed-date-spa {
 }
 
 .blocks-spa {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -100,5 +102,6 @@ header .displayed-date-spa {
   position: relative;
   height: 9.0909090909%;
   cursor: pointer;
-  border: solid 1px red;
+  text-align: center;
+  background-color: #f4f6f6;
 }/*# sourceMappingURL=calendar-spa.css.map */

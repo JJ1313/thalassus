@@ -16,18 +16,18 @@ body{
 }
 //------ SCROLLBAR ------
 
-::-webkit-scrollbar{
-  width: 10px;
-}
-::-webkit-scrollbar-thumb{
-  background: $color-orange-light;
-}
-::-webkit-scrollbar-track-piece{
-  background: $color-blue;
-}
-::-webkit-scrollbar-button{
-  background: $color-blue;
-}
+// ::-webkit-scrollbar{
+//   width: 10px;
+// }
+// ::-webkit-scrollbar-thumb{
+//   background: $color-orange-light;
+// }
+// ::-webkit-scrollbar-track-piece{
+//   background: $color-blue;
+// }
+// ::-webkit-scrollbar-button{
+//   background: $color-blue;
+// }
 //------ RESPONSIVIDAD ------
 @media(max-width: 991px){
   .nav-link{
@@ -86,7 +86,7 @@ body{
 }
 .offcanvas{
   background-color: $color-white1;
-  color: black;
+  color: $color-blue;
 }
 .navbar-filled{
   background-color: $color-blue;
@@ -184,6 +184,11 @@ section p{
 }
 .white{
   background-color: $color-white1;
+}
+//------ ALOJAMIENTO MODAL ------
+#alojamiento .modal-content{
+  background-color: rebeccapurple;
+
 }
 //------ MENSAJE REMODELACION ------
 #remodelacion .modal-content{
