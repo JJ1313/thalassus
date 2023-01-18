@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+#reserva-spa {
+  display: none;
+  font-size: 1rem;
+}
+
+.wrapper-schedule {
+  background-color: #f4f6f6;
+  width: 50rem;
+}
+
+.wrapper-schedule header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+
+header .displayed-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+.calendar-week {
+  padding: 13px;
+}
+
+.calendar-week .days {
+  margin-bottom: 0rem;
+}
+
+.calendar-week .days-weeks li {
+  font-weight: 500;
+}
+
+.calendar-week ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.calendar-week .block-week li {
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+}
+
+.calendar-week ul li {
+  position: relative;
+  width: 14.2857142857%;
+  height: 1.3rem;
+}
+
+.calendar-week .block-week ul li {
+  height: 0.5rem;
+}
+
+.calendar.week .block-week li::before {
+  position: absolute;
+  content: "";
+  height: 0.5rem;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: #f4f6f6;
+}
+
+.block-week li.curr-block::before {
+  background-color: #0d2136;
+  opacity: 30%;
+}
+
+.block-week li.available::before {
+  background-color: rgb(119, 214, 119);
+}
+
+.block-week li.unavailable::before {
+  background-color: rgb(243, 86, 86);
+}
+
+.block-spa li.selected-block::before {
+  background-color: #cd7778;
+}
+
+.block-week li.inactive {
+  color: #a4a4a4;
+}/*# sourceMappingURL=calendar-week.css.map */

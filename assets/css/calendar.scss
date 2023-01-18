@@ -1,15 +1,8 @@
+@use "theme" as t;
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
-$color-blue: #0d2136;
-$color-orange-light: #fdb59f;
-$color-orange-dark: #cd7778;
-$color-white1: #f4f6f6;
-// $color-white1: #d7d7d7;
-$color-black1: #333333;
-$color-inactive: #a4a4a4;
-$color-between: #d7d7d7;
-$color-available: rgb(119, 214, 119);
-$color-unavailable: rgb(243, 86, 86) ; 
+
 
 *{
   font-family: 'Montserrat', sans-serif;
@@ -26,7 +19,7 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 .grupo-reserva{
   width: 16rem;
-  background-color: $color-white1;
+  background-color: t.$color-white1;
   cursor:pointer;
 }
 .grupo-reserva input{
@@ -51,16 +44,16 @@ $color-unavailable: rgb(243, 86, 86) ;
   outline: none;
 }
 .grupo-reserva input::placeholder{
-  color: $color-blue
+  color: t.$color-blue
 }
 .grupo-reserva label{
   cursor: pointer;
-  color: $color-blue;
+  color: t.$color-blue;
 }
 //------ INF. ESTADIA ------
 .informacion-estadia{
   margin: 0;
-  color: $color-blue;
+  color: t.$color-blue;
   font-size: .7rem;
   align-content: center;
 }
@@ -69,27 +62,27 @@ $color-unavailable: rgb(243, 86, 86) ;
   font-weight: 500;
 }
 .informacion-estadia{
-  background-color: $color-white1;
+  background-color: t.$color-white1;
 }
 .informacion-estadia .regular{
   font-size: .8rem;
 }
 //------ BTN CONTINUAR ------
 .btn-continuar{
-  background-color: $color-white1;
+  background-color: t.$color-white1;
   border: none;
   width: 17rem;
   height: 4rem;
   border-radius: 0;
-  color: $color-blue;
+  color: t.$color-blue;
   align-self: center;
   opacity: 100%;
 }
 .btn-continuar:hover{
-  background-color: $color-white1;
+  background-color: t.$color-white1;
 }
 .btn-continuar:disabled{
-  background-color: $color-white1;
+  background-color: t.$color-white1;
 }
 //------ IMAGEN ROOM TYPE ------
 #carousel-reserva img{
@@ -114,7 +107,6 @@ $color-unavailable: rgb(243, 86, 86) ;
 }
 //------ CALENDAR ------
 .wrapper{
-  background-color: white;
   // width: 27.8rem;
   width: 22rem;
 }
@@ -138,11 +130,11 @@ header .icons span{
   text-align: center;
   line-height: 38px;
   cursor: pointer;
-  color: $color-blue;
+  color: t.$color-blue;
   font-size: 1.9rem;
 }
 header .icons span:hover{
-  color: $color-orange-light;
+  color: t.$color-orange-light;
 }
 header .icons span:last-child{
   margin-right: -10px;
@@ -189,28 +181,28 @@ header .icons span:last-child{
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  background-color: $color-white1;
+  background-color: t.$color-white1;
 }
 // .days li.curr-day::before{
 //   background-color: $color-blue;
 //   opacity: 30%;
 // }
 .days li.between-dates::before{
-  background-color: $color-between;
+  background-color: t.$color-between;
 }
 .days li.available::before{
-  background-color: $color-available;
+  background-color: t.$color-available;
 }
 .days li.unavailable::before{
-  background-color: $color-unavailable;
+  background-color: t.$color-unavailable;
 }
 
 .days li.check-in-date::before, .days li.check-out-date::before{
-  background-color: $color-orange-light;
+  background-color: t.$color-orange-light;
 }
 // .days li.between-active::before{
 //   background-color: $color-orange-light;
 // }
 .days li.inactive{
-  color: $color-inactive;
+  color: t.$color-inactive;
 }

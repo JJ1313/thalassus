@@ -1,15 +1,6 @@
+@use "theme" as t;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
-$color-blue: #0d2136;
-$color-orange-light: #fdb59f;
-$color-orange-dark: #cd7778;
-$color-white1: #f4f6f6;
-// $color-white1: #d7d7d7;
-$color-black1: #333333;
-$color-inactive: #a4a4a4;
-$color-between: #d7d7d7;
-$color-available: rgb(119, 214, 119);
-$color-unavailable: rgb(243, 86, 86) ; 
 *{
   font-family: 'Montserrat', sans-serif;
 }
@@ -75,7 +66,7 @@ header .displayed-date-spa{
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  background-color: $color-white1;
+  background-color: t.$color-white1;
 }
 // .days-spa li.curr-day-spa{
 //   background-color: $color-blue;
@@ -83,19 +74,16 @@ header .displayed-date-spa{
 //   color: red;
 // }
 .days-spa li.available::before{
-  background-color: $color-available;
+  background-color: t.$color-available;
 }
 .days-spa li.unavailable::before{
-  background-color: $color-unavailable;
+  background-color: t.$color-unavailable;
 }
-.days-spali.selected-day::before{
-  background-color: $color-orange-light;
-}
-.days-spa li.selected-block::before{
-  background-color: $color-orange-light;
+.days-spa li.selected-day::before{
+  background-color: t.$color-orange-light;
 }
 .days-spa li.inactive{
-  color: $color-inactive;
+  color: t.$color-inactive;
 }
 //------ DAYLY CALENDAR ------
 .blocks-spa{
@@ -109,6 +97,17 @@ header .displayed-date-spa{
   height: 100%;
   // background-color: red;
 }
+.blocks-spa li::before{
+  position: absolute;
+  content: "";
+  height: 2.5rem;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: t.$color-white1;
+}
 .blocks-spa li{
   position: relative;
   // width: 100%;
@@ -116,5 +115,12 @@ header .displayed-date-spa{
   cursor: pointer;
   // border: solid 1px red;
   text-align: center;
-  background-color: $color-white1;
+  // background-color: t.$color-white1;
+  // color: red;
+}
+.blocks-spa li::before{
+  background-color: t.$color-white1;
+}
+.blocks-spa li.selected-block::before{
+  background-color: t.$color-orange-light;
 }

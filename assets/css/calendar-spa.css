@@ -75,11 +75,7 @@ header .displayed-date-spa {
   background-color: rgb(243, 86, 86);
 }
 
-.days-spali.selected-day::before {
-  background-color: #fdb59f;
-}
-
-.days-spa li.selected-block::before {
+.days-spa li.selected-day::before {
   background-color: #fdb59f;
 }
 
@@ -98,10 +94,29 @@ header .displayed-date-spa {
   height: 100%;
 }
 
+.blocks-spa li::before {
+  position: absolute;
+  content: "";
+  height: 2.5rem;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: #f4f6f6;
+}
+
 .blocks-spa li {
   position: relative;
   height: 9.0909090909%;
   cursor: pointer;
   text-align: center;
+}
+
+.blocks-spa li::before {
   background-color: #f4f6f6;
+}
+
+.blocks-spa li.selected-block::before {
+  background-color: #fdb59f;
 }/*# sourceMappingURL=calendar-spa.css.map */

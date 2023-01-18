@@ -14,8 +14,8 @@ $(function(){
   //--- FECHA Y HORA RESERVA ---
   let dateSpa;
   let hourSpa;
-  let displayedMonth = month;
-  let displayedYear = year;
+  let displayedMonth;
+  let displayedYear;
   // Almacena array de meses en ingles o español
   let months;
   //--- Pasos del proceso de reserva---
@@ -28,10 +28,8 @@ $(function(){
   let cantNoches = 0;
   
   //------ FUNCTIONS ------
-  const getDaysInMonth = (month, year) =>{
-    let cantDias = new Date(year, month + 1, 0).getDate();
-    return cantDias;
-  };  const selectLanguage = () =>{
+  const getDaysInMonth = (month, year) => (new Date(year, month, 0).getDate());
+  const selectLanguage = () =>{
     if($("html").attr("lang") == "es"){
       months = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
       placeholder = "Selecciona una fecha";
@@ -46,33 +44,12 @@ $(function(){
   }
 
   const renderCalendar = () => {
-    $("#month-spa .displayed-date-spa").text(`${months[displayedMonth]} ${displayedYear}`);
-    // -agregar los dias, agregar dias mes pasado como class inactiv
-      let cantDiasMonth = getDaysInMonth(displayedMonth, displayedYear);
-      //let cantDiasMonthBefore = getDaysInMonth(displayedMonth - 1, year);
-      let nameFirstDayMonth = new Date(displayedYear, displayedMonth, 1).getDay() ;
-      //let primerNumMonthBefore = cantDiasMonthBefore - 1;
-      //console.log(primerNumMonthBefore);
-      let limite = nameFirstDayMonth - 1;
-      if (limite < 0){
-        limite = 6
-      }
-      let write = false;
-      let number = 1;
-      $("#month-spa .days-spa li").each(function(index){
-        if(index == limite){
-          write = true;
-        }
-        if(write  && number <= cantDiasMonth){
-          $(this).css({"opacity": "100", "pointer-events": "auto"});
-          $(this).text(number);
-          number++;
-        }
-        else{
-          $(this).css({"opacity": "0", "pointer-events": "none"});
-          
-        }
-      })
+    let diasMesAnterior;
+    let diasMesActual;
+    // -agregar los dias, agregar dias mes pasado como class inactive
+    $("#month .days li").each(function(){
+      
+    })
   }
   const activarContinuar = () =>{
     // if( dateCheckIn && dateCheckOut && $("#roomType").val()!= 0){
@@ -80,21 +57,13 @@ $(function(){
     // }
   }
   const markDays = () =>{
-    let tempDate;
-    $("#month-spa .days-spa li").each(function(){
-      tempDate = new Date(displayedYear, displayedMonth, $(this).text());
-      presentDate.setHours(0,0,0,0);
-      $(this).removeClass();
-      if(tempDate.getTime() == presentDate.getTime()){
-        $(this).addClass("curr-day-spa");
-      }
-      if(tempDate < presentDate){
-        $(this).addClass("inactive");
-      } 
-      if(dateSpa && dateSpa.getTime() == tempDate.getTime()){
-        $(this).addClass("selected-day");
-      }
-    })
+    // let tempDate;
+    // $("#month .days li").each(function(){
+    //   tempDate = new Date(displayedYear, displayedMonth, $(this).text());
+    //   presentDate.setHours(0,0,0,0);
+    //   $(this).removeClass();
+      
+    // })  
   }
   // Marcar paso en la selecion de reserva
   const markStep = () => {
@@ -102,48 +71,48 @@ $(function(){
       $(".grupo-reserva.type-spa").css("border-color", colorBlue);
       $(".grupo-reserva.date-schedule").css("border-color", colorOrangeLight);
       $(".grupo-reserva.date-schedule input").attr("placeholder", "");
-      // if(!$("#btncontinuar").attr("disabled")){
-      //   $("#btncontinuar").css({"border": "solid 2px" + colorBlue});
-      // }
-      // else{
-      //   $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      // }
+      if(!$("#btncontinuar").attr("disabled")){
+        $("#btncontinuar").css({"border": "solid 2px" + colorBlue});
+      }
+      else{
+        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
+      }
     }
     if(step == 1){
       $(".grupo-reserva.type-spa").css("border-color", colorOrangeLight);
       $(".grupo-reserva.date-schedule").css("border-color", colorBlue);
       $(".grupo-reserva.date-schedule input").attr("placeholder", placeholder);
-      // if(!$("#btncontinuar").attr("disabled")){
-      //   $("#btncontinuar").css("border", "solid 2px" + colorBlue);
-      // }
-      // else{
-      //   $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
-      // }
+      if(!$("#btncontinuar").attr("disabled")){
+        $("#btncontinuar").css("border", "solid 2px" + colorBlue);
+      }
+      else{
+        $("#btncontinuar").css("border", "solid 2px" + colorOrangeLight);
+      }
     }
     if(step == 2){
       $(".grupo-reserva.type-spa").css("border-color", colorOrangeLight);
       $(".grupo-reserva.date-schedule").css("border-color", colorOrangeLight);
-      // $("#btncontinuar").css("border", "solid 2px" + colorBlue);
+      $("#btncontinuar").css("border", "solid 2px" + colorBlue);
     }
   }
 
   //------ CLICKS EVENTS ------
   //---Cambiar mes
-  $("#month-spa .chevron").click(function () { 
+  $("#week .chevron").click(function () { 
     if($(this).hasClass("next")){
-      displayedMonth++;
+      // displayedMonth++;
     }
     if($(this).hasClass("prev")){
-      displayedMonth--;
+      // displayedMonth--;
     }
-    if(displayedMonth == -1){
-      displayedMonth = 11;
-      displayedYear--;
-    }
-    if(displayedMonth == 12){
-      displayedMonth = 0
-      displayedYear++;
-    }
+    // if(displayedMonth == -1){
+    //   displayedMonth = 11;
+    //   displayedYear--;
+    // }
+    // if(displayedMonth == 12){
+    //   displayedMonth = 0
+    //   displayedYear++;
+    // }
     renderCalendar();
     markDays();
   }) 
@@ -178,15 +147,21 @@ $(function(){
     step = 1;
     markStep();
   })
-  //------ SELECT SPA DAY ------
-  $(".days-spa li").click(function(){
-    let auxDay= $(this).text().padStart(2, "0");
-    let auxMonth = (displayedMonth + 1).toString().padStart(2, "0");
-    let auxDate = new Date(displayedYear, auxMonth-1, auxDay);
-    dateSpa = new Date(displayedYear, auxMonth-1, auxDay);
-
-    //---Validar
-    $("#spaDate").val(`${auxDay}-${auxMonth}-${displayedYear}`);
+  //------ SELECT BOOKING DATE ------
+  $(".block-week li").click(function(){
+    let hour = $(this).text();
+    let i = $(this).index();
+    let dayDisplayed = $("#number-schedule li").eq(i%7).text(); 
+    let monthDisplayed = $("#month-schedule li").eq(i%7).text();
+    let yearDisplayed = $("#year-schedule li").eq(i%7).text();
+    // let month = 
+    // let month = (displayedMonth + 1).toString().padStart(2, "0");
+    let auxDate;
+//--- Check in validar
+    // auxDate = new Date(year, month, numberDay);
+    let monthNumber = months.indexOf(monthDisplayed) +1;
+    $("#spaDate").val(`${dayDisplayed.toString().padStart(2,"0")}-${monthNumber.toString().padStart(2,"0")}-${yearDisplayed}`);
+    $("#spaHour").val(`${hour}`);
     // if(step == 1){
 
     //   if(auxDate > presentDate){
@@ -226,28 +201,7 @@ $(function(){
     activarContinuar();
     markStep();
     markDays();
-    // markBlock();
   })
-  //------ SELECT BLOCK SPA ------
-  const markBlock = () =>{
-    let tempTime;
-    $(".blocks-spa li").each(function(){
-      $(this).removeClass();
-      // auxTime = ;
-      tempTime = $(this).text();
-      // console.log(hourSpa);
-      //Habilitar tomar en mismo dia???
-      if(tempTime == hourSpa){
-        $(this).addClass("selected-block");
-      }
-    })
-  }
-  $(".blocks-spa li").click(function(){
-    let auxHour = $(this).text();
-    $("#spaHour").val(`${auxHour}`);
-    hourSpa = auxHour;
-    markBlock();
-  });
   // Select language
   $("#language").click(function(){
     selectLanguage();

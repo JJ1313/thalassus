@@ -1,11 +1,6 @@
+@use "theme" as t;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
-// $color-blue: #143556;
-$color-blue: #0d2136;
-$color-orange-light: #fdb59f;
-$color-orange-dark: #cd7778;
-$color-white1: #d7d7d7;
-$color-black1: #333333;
 *{  
   font-family: 'Montserrat', sans-serif;
 }
@@ -31,12 +26,12 @@ body{
 //------ RESPONSIVIDAD ------
 @media(max-width: 991px){
   .nav-link{
-    color: $color-black1;
+    color: t.$color-black1;
     padding-left: .5rem;
   }
   .nav-link.active{
-    color: $color-black1 !important;
-    border-left: solid 2px $color-orange-dark;
+    color: t.$color-black1 !important;
+    border-left: solid 2px t.$color-orange-dark;
   }
   .text-hero{
     margin-top: -40%;
@@ -48,13 +43,13 @@ body{
 }
 @media(min-width: 992px){
   .nav-link{
-    color: $color-white1;
+    color: t.$color-white1;
     font-size: .8rem;
     margin: 0 1rem;
     letter-spacing: .1rem;
   }
   .nav-link.active{
-    border-bottom: solid 2px $color-orange-dark;
+    border-bottom: solid 2px t.$color-orange-dark;
   }
   .text-hero{
     font-size: 1.3rem;
@@ -66,31 +61,31 @@ body{
 }
 //------ NAVBAR ------
 .nav-link:hover{
-  color: $color-orange-light;
+  color: t.$color-orange-light;
 }
 .navlink.active.collapsed{
-  border: solid 2px $color-orange-dark;
+  border: solid 2px t.$color-orange-dark;
 }
 .navbar-brand{
-  color: $color-white1;
+  color: t.$color-white1;
   letter-spacing: .2rem;
   font-size: 1.4rem;
   padding-left: 1rem;
   font-weight: 600;
 }
 .navbar-brand:hover{
-  color: $color-white1;
+  color: t.$color-white1;
 }
 .navbar-collapse{
   margin-left: auto;
 }
 .offcanvas{
-  background-color: $color-white1;
-  color: $color-blue;
+  background-color: t.$color-white1;
+  color: t.$color-blue;
 }
 .navbar-filled{
-  background-color: $color-blue;
-  color: $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
 }
 //------ HERO ------
 video{
@@ -108,25 +103,25 @@ video{
   left: 50%;
   transform: translate(-50%, 0);
   text-align: center;
-  color: $color-white1;
+  color: t.$color-white1;
 }
 //------ FOOTER ------
 footer{
-  background-color: $color-blue;
+  background-color: t.$color-blue;
   margin-top: 5rem;
   padding: 5rem;
-  color:$color-white1;
+  color:t.$color-white1;
 }
 footer a{
   text-decoration:none;
-  color: $color-white1;
+  color: t.$color-white1;
   margin:0 0 1rem;
 }
 footer a:hover{
-  color: $color-orange-light;
+  color: t.$color-orange-light;
 }
 #direccion:hover{
-  color: $color-orange-light;
+  color: t.$color-orange-light;
   cursor: pointer;
 }
 .name-footer{
@@ -167,7 +162,7 @@ section p{
 .title a{
   letter-spacing: .2rem;
   text-decoration: none;
-  color: $color-black1;
+  color: t.$color-black1;
 }
 .carta p{
   font-size: .8rem;
@@ -175,25 +170,28 @@ section p{
 }
 //------ COLORS DECORATIONS ------
 .orange{
-  background-color: $color-orange-light;
+  background-color: t.$color-orange-light;
   opacity: 60%;
 }
 .blue{
-  background-color: $color-blue;
+  background-color: t.$color-blue;
   opacity: 15%;
 }
 .white{
-  background-color: $color-white1;
+  background-color: t.$color-white1;
 }
 //------ ALOJAMIENTO MODAL ------
+#alojamiento{
+  background-color: t.$color-blue;
+}
 #alojamiento .modal-content{
-  background-color: rebeccapurple;
+  background-color: t.$color-blue;
 
 }
 //------ MENSAJE REMODELACION ------
 #remodelacion .modal-content{
-  background-color: $color-blue;
-  color: $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
   border-radius: 0;
   opacity: 80%;
 }
@@ -201,9 +199,9 @@ section p{
   border-bottom: none;
 }
 #remodelacion .modal-header button{
-  background-color: $color-blue;
-  color: $color-white1;
-  border: 1px solid $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
+  border: 1px solid t.$color-white1;
   height: 1.6rem;
   width: 1.6rem;
 }
@@ -215,9 +213,9 @@ section p{
   justify-content: center;
 }
 #remodelacion .modal-footer button{
-  background-color: $color-blue;
-  color: $color-white1;
-  border: solid 1px $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
+  border: solid 1px t.$color-white1;
   border-radius: 0;
   opacity: 100%;
   // width: 5rem;
@@ -225,11 +223,11 @@ section p{
 //------ FORM DATOS RESERVAR -----
 #myModal2{
   //#1a1a1c
-  background-color: $color-blue;
+  background-color: t.$color-blue;
 }
 #myModal2 .modal-content{
-  background-color: $color-blue;
-  color: $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
   border-radius: 0;
   opacity: 90%;
 }
@@ -237,9 +235,9 @@ section p{
   border-bottom: none;
 }
 #myModal2 .modal-header button{
-  background-color: $color-blue;
-  color: $color-white1;
-  border: 1px solid $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
+  border: 1px solid t.$color-white1;
   height: 1.6rem;
   width: 1.6rem;
 }
@@ -249,31 +247,31 @@ section p{
   justify-content: center;
 }
 #myModal2 .modal-footer button{
-  background-color: $color-blue;
-  color: $color-white1;
-  border: solid 1px $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
+  border: solid 1px t.$color-white1;
   border-radius: 0;
   opacity: 100%;
 }
 #myModal2 input{
-  background-color: $color-blue;
-  color: $color-white1;
-  border: 1px solid $color-orange-light;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
+  border: 1px solid t.$color-orange-light;
   border-radius: 0;
   opacity: 100%;
 }
 #myModal2 input:focus{
   box-shadow: none;
-  border: solid 2px $color-orange-dark;
+  border: solid 2px t.$color-orange-dark;
 }
 #myModal2 textarea{
-  background-color: $color-blue;
-  color: $color-white1;
-  border: 1px solid $color-orange-light;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
+  border: 1px solid t.$color-orange-light;
   border-radius: 0;
 }
 #myModal2 textarea:focus{
-  border: 2px solid $color-orange-dark;
+  border: 2px solid t.$color-orange-dark;
   box-shadow: none;
 }
 //------ BTN RESERVA -------
@@ -281,21 +279,21 @@ section p{
   opacity: 90%;
 }
 .btn-reservar, .btn-reservar:hover{
-  background-color: $color-white1;
+  background-color: t.$color-white1;
   width: 17rem;
   height: 3.5rem;
   border-radius: 0;
-  color: $color-blue;
+  color: t.$color-blue;
   align-self: center;
 }
 .btn-reservar:hover{
-  border: 2px solid $color-orange-light;
+  border: 2px solid t.$color-orange-light;
   opacity: 100%;
 }
 
 #btn-reserva-spa, #btn-comprar-gift{
-  background-color: $color-blue;
-  color: $color-white1;
+  background-color: t.$color-blue;
+  color: t.$color-white1;
   margin-top: 2rem;
 }
 // ------- MAP ------
@@ -314,7 +312,7 @@ section p{
   position: fixed;
   bottom: 70px;
   left: 20px;
-  background-color: $color-blue;
+  background-color: t.$color-blue;
   border-radius: 50%;
   padding: 0;
 }

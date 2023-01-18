@@ -1,0 +1,82 @@
+@use "theme" as t;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+#reserva-spa{
+  display: none;
+  font-size:  1rem;
+}
+.wrapper-schedule{
+  background-color: t.$color-white1;
+  width: 50rem;
+}
+.wrapper-schedule header{
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .displayed-date{
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+}
+.calendar-week{
+  padding: 13px;
+}
+.calendar-week .days{
+  margin-bottom: 0rem;
+}
+.calendar-week .days-weeks li{
+  font-weight: 500;
+}
+.calendar-week ul{
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.calendar-week .block-week li{
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+}
+.calendar-week ul li{
+  position: relative;
+  width: calc(100% / 7);
+  height: 1.3rem;
+}
+.calendar-week .block-week ul li{
+  height: .5rem;
+}
+.calendar.week .block-week li::before{
+  position: absolute;
+  content: "";
+  height: .5rem;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background-color: t.$color-white1;
+}
+.block-week li.curr-block::before{
+  background-color: t.$color-blue;
+  opacity: 30%;
+}
+.block-week li.available::before{
+  background-color: t.$color-available;
+}
+.block-week li.unavailable::before{
+  background-color: t.$color-unavailable;
+}
+
+.block-spa li.selected-block::before{
+  background-color: t.$color-orange-dark;
+}
+.block-week li.inactive{
+  color: t.$color-inactive;
+}

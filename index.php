@@ -374,53 +374,53 @@ if ($items>0){
                 <li>Dom</li>          
               </ul>
               <ul class="days" >      
-                <li>1</li>          
-                <li>2</li>          
-                <li>3</li>          
-                <li>4</li>          
-                <li>5</li>          
-                <li>6</li>          
-                <li>7</li>          
-                <li>8</li>          
-                <li>9</li>          
-                <li>10</li>          
-                <li>11</li>          
-                <li>12</li>          
-                <li>13</li>          
-                <li>14</li>          
-                <li>15</li>          
-                <li>16</li>          
-                <li>17</li>          
-                <li>18</li>          
-                <li>19</li>          
-                <li>20</li>          
-                <li>21</li>          
-                <li>22</li>          
-                <li>23</li>          
-                <li>24</li>          
-                <li>25</li>          
-                <li>26</li>          
-                <li>27</li>          
-                <li>28</li>          
-                <li>29</li>          
-                <li>30</li>          
-                <li>31</li>                 
-                <li>32</li>                 
-                <li>33</li>                 
-                <li>34</li>                 
-                <li>35</li>                 
-                <li>36</li>                 
-                <li>37</li>                 
-                <li>38</li>                 
-                <li>39</li>                 
-                <li>40</li>                 
-                <li>41</li>                 
-                <li>42</li>                 
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
               </ul>
             </div>
           </div>
         </div>
-        <div class="row informacion-estadia justify-content-center gap-6 text-center mt-1 py-3">
+        <div class="row informacion-estadia justify-content-center gap-6 text-center mt-3 py-3">
           <div class="col col-2 my-auto regular">
             CHECK-IN:  <strong>14:00</strong><br>
             CHECK-OUT: <strong>12:00</strong> 
@@ -471,12 +471,16 @@ if ($items>0){
                    document.getElementById('valor-spa').value=50000;
                  }">
                   <option value="0">--Seleccione</option>
-                  <option value="1">MASAJE</option>
-                  <option value="2">SALA THALASOTEAPIA</option>
+                  <option value="1">SALA THALASOTEAPIA INDIVIDUAL</option>
+                  <option value="2">SALA THALASOTEAPIA DOBLE</option>
+                  <option value="3">MASAJE RELAJACIÓN</option>
+                  <option value="4">MASAJE DESCONTRACTURANTE</option>
+                  <option value="5">MASAJE MIXTO</option>
+                  <option value="6">MASAJE DRENAJE LINFÁTICO</option>
+                  <option value="7">MASAJE SACRO CRANEAL</option>
                 </select>
               </div>
           </div>
-          
           <div class="grupo-reserva date-schedule d-flex flex-column">
             <label for="spaDate">DIA</label>
             <div class="d-flex">
@@ -491,96 +495,98 @@ if ($items>0){
           <button id="btnContinuarSpa" class="btn btn-continuar" data-toggle="modal" data-target="#myModal2" onclick="return false;">CONTINUAR</button> 
         </div>
       </form>
-      <div class="row justify-content-center mt-5">
-        <div class="col-3">
-          <p id="descripcion-selection-spa">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe at, excepturi quasi velit facere in libero distinctio error voluptates incidunt consectetur sapiente quos cum consequatur! Illum fuga iste impedit qui.</p>
-        </div>
-        <div id="month-spa" class="col-6 wrapper-spa">
-          <header>
-            <p class="displayed-date-spa">Mes AÑO</p>
-            <div class="icons">
-              <span class="material-symbols-sharp prev chevron">chevron_left</span>
-              <span class="material-symbols-sharp next chevron">chevron_right</span>
+      <div class="container">
+        <div class="row justify-content-between mt-5">
+          <div class="col-3  ms-5">
+            <p id="descripcion-selection-spa">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe at, excepturi quasi velit facere in libero distinctio error voluptates incidunt consectetur sapiente quos cum consequatur! Illum fuga iste impedit qui.</p>
+          </div>
+          <div id="month-spa" class="col-6 wrapper-spa ms-5">
+            <header>
+              <p class="displayed-date-spa">Mes AÑO</p>
+              <div class="icons">
+                <span class="material-symbols-sharp prev chevron">chevron_left</span>
+                <span class="material-symbols-sharp next chevron">chevron_right</span>
+              </div>
+            </header>
+            <div class="calendar-spa">
+              <ul class="weeks-spa">
+                <li>Lun</li>          
+                <li>Mar</li>          
+                <li>Mie</li>          
+                <li>Jue</li>          
+                <li>Vie</li>          
+                <li>Sab</li>          
+                <li>Dom</li>          
+              </ul>
+              <ul class="days-spa">      
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>          
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                 
+                <li></li>                  
+              </ul>
             </div>
-          </header>
-          <div class="calendar-spa">
-            <ul class="weeks-spa">
-              <li>Lun</li>          
-              <li>Mar</li>          
-              <li>Mie</li>          
-              <li>Jue</li>          
-              <li>Vie</li>          
-              <li>Sab</li>          
-              <li>Dom</li>          
-            </ul>
-            <ul class="days-spa">      
-              <li>1</li>          
-              <li>2</li>          
-              <li>3</li>          
-              <li>4</li>          
-              <li>5</li>          
-              <li>6</li>          
-              <li>7</li>          
-              <li>8</li>          
-              <li>9</li>          
-              <li>10</li>          
-              <li>11</li>          
-              <li>12</li>          
-              <li>13</li>          
-              <li>14</li>          
-              <li>15</li>          
-              <li>16</li>          
-              <li>17</li>          
-              <li>18</li>          
-              <li>19</li>          
-              <li>20</li>          
-              <li>21</li>          
-              <li>22</li>          
-              <li>23</li>          
-              <li>24</li>          
-              <li>25</li>          
-              <li>26</li>          
-              <li>27</li>          
-              <li>28</li>          
-              <li>29</li>          
-              <li>30</li>          
-              <li>31</li>                 
-              <li>32</li>                 
-              <li>33</li>                 
-              <li>34</li>                 
-              <li>35</li>                 
-              <li>36</li>                 
-              <li>37</li>                 
-              <li>38</li>                 
-              <li>39</li>                 
-              <li>40</li>                 
-              <li>41</li>                 
-              <li>42</li>                  
+          </div>
+          <div class="col-2 me-auto">
+            <ul class="blocks-spa">
+              <li>09:00</li>
+              <li>10:15</li>
+              <li>11:30</li>
+              <li>12:45</li>
+              <li>14:00</li>
+              <li>15:15</li>
+              <li>14:30</li>
+              <li>15:45</li>
+              <li>17:00</li>
+              <li>18:15</li>
+              <li>19:30</li>
             </ul>
           </div>
         </div>
-        <div class="col-2">
-          <ul class="blocks-spa">
-            <li>09:00</li>
-            <li>10:15</li>
-            <li>11:30</li>
-            <li>12:45</li>
-            <li>14:00</li>
-            <li>15:15</li>
-            <li>14:30</li>
-            <li>15:45</li>
-            <li>17:00</li>
-            <li>18:15</li>
-            <li>19:30</li>
-          </ul>
-        </div>
-      </div>
-      <div class="row informacion-spa justify-content-center gap-6 text-center">
-        <div class="col col-5 py-3">
-          INFORMACION SOBRE SPA
-        </div>
-        <div class="col col-5 py-3">
-          VALOR: CLP $ <input id="valor-spa" type="text" value="">
+        <div class="row informacion-spa justify-content-center gap-6 text-center">
+          <div class="col col-5 py-3">
+            INFORMACION SOBRE SPA
+          </div>
+          <div class="col col-5 py-3">
+            VALOR: CLP $ <input id="valor-spa" type="text" value="">
+          </div>
         </div>
       </div>
     </section>
