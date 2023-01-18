@@ -68,8 +68,12 @@
     ?>       
     <tr>
     <th scope='row'></th>
-    <td style='text-align:center;'>     
-    <button type="button" class="btn btn-success" onclick="window.location.href='pagocarrito.php'"><h1>PAGAR</h1></button><img src="webpay.png" alt="webpay" width="180" height="90"></td>       
+    <td style='text-align:center;'> 
+    <form name="ircarrito" action="pagocarrito.php?rut=<?php echo $_SESSION["rut"]; ?>" method="post">    
+    <button type="submit" class="btn btn-success"><h1>PAGAR</h1></button><img src="webpay.png" alt="webpay"
+     width="180" height="90">
+    </form>
+    </td>       
     <td>
     <BR>  
     <button type="button" class="btn btn-danger" onclick="window.close();"><h1>Salir</h1></button>  

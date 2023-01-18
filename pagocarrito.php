@@ -1,5 +1,6 @@
  <?php
  session_start();
+ $rut= $_GET["rut"];
  ?>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
@@ -16,7 +17,8 @@ transform: translate(-50%, -50%);text-align: center;">
  
  include("conexion.php");    
  $idcli=0;
- $consulta = "SELECT * FROM clientes WHERE codigo='" . $_SESSION["rut"] . "'";
+ $consulta = "SELECT * FROM clientes WHERE codigo='" . $rut . "'";
+ //echo $consulta;
  foreach ($con->query($consulta) as $row) {
         $idcli=$row["id"];
  }
@@ -28,7 +30,7 @@ transform: translate(-50%, -50%);text-align: center;">
  $update = mysqli_query($con,$sql);     
  session_destroy();
  echo "<BR>";
- echo "<img src='vistobueno.png' alt='OK' width='200' height='180'>";
+ echo "<img src='vistobueno.png' alt='OK' width='220' height='180'>";
  echo "<p style='color:black;font-weight: bold;height: 10px !important;text-align:center;margin-left:15%;'><h2>Pago Exitoso !!!<h2></p>";
  echo "</br>";
 ?>

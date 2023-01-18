@@ -129,9 +129,8 @@ if ($items>0){
     //echo "Horai=".date("Y-m-d H:i:s", $horini)."<BR>";
     //echo "Horaf=".$fecfin."<BR>"; 
     //echo "Hora-ac".date("Y-m-d H:i:s")."<BR>";
-    if (date("Y-m-d H:i:s")>$fecfin){     
-       echo "SI";  
-       //header('Location: expira.php');    
+    if (date("Y-m-d H:i:s")>$fecfin){            
+       header('Location: expira.php');    
        //echo "<script>window.location.href='expira.php'</script>";
     }else{
       //echo "NO";
@@ -165,12 +164,12 @@ if ($items>0){
             "Minutes": {
               "text": "Minutes",
               "color": "#BBFFBB",
-              "show": true
+              "show": false
             },
             "Seconds": {
               "text": "Seconds",
               "color": "#FF9999",
-               "show": true
+               "show": false
             }
           }          
       }
@@ -679,7 +678,7 @@ if ($items>0){
             <a href="https://goo.gl/maps/MwwrmMmakmaMumSr5" target="_blank" class="text-decoration-underline location-link mx-auto mx-md-0 my-auto">
               <img src="./assets/img/icon/gps2.png" alt="Ver en el mapa" class="justify-content-center" height="30">
             </a>
-              <div id="direccion" class="d-flex flex-wrap justify-content-center justify-content-md-start my-3 my-md-auto mx-3">
+              <div id="direccion2" class="d-flex flex-wrap justify-content-center justify-content-md-start my-3 my-md-auto mx-3">
                 Los tamarindos 36, Costa Brava, Concón,&nbsp;  
                 <div> Región de Valparaíso.</div>
               </div> 

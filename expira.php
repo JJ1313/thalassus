@@ -8,11 +8,11 @@
          $idcli=$row["id"];          
  }
  //echo $idcli;
- $sql = "DELETE FROM res_cabanas where idcli=".$idcli." and estado=1";    
+ $sql = "DELETE FROM res_cabanas where idcli=".$idcli." and estado=0";    
  $update = mysqli_query($con,$sql);    
- $sql = "DELETE FROM res_suites where idcli=".$idcli." and estado=1";    
+ $sql = "DELETE FROM res_suites where idcli=".$idcli." and estado=0";    
  $update = mysqli_query($con,$sql);
- $sql = "DELETE FROM res_masajes where idcli=".$idcli." and estado=1";    
+ $sql = "DELETE FROM res_masajes where idcli=".$idcli." and estado=0";    
  $update = mysqli_query($con,$sql);
  session_destroy(); 
  } 
